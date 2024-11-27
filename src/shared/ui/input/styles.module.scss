@@ -1,0 +1,30 @@
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  font-family: 'Poppins-Regular';
+
+  label {
+    font-size: 16px;
+    margin-bottom: 16px;
+  }
+
+  input {
+    font-size: 16px;
+    border: 1px solid var(--color-gray);
+    border-radius: 3px;
+    padding: 13px 24px;
+    color: var(--color-black);
+    transition: outline 100ms ease-in-out;
+    background-color: var(--color-white);
+
+    &:focus {
+      outline: 1px solid var(--color-blue);
+    }
+  }
+
+  span {
+    margin-top: 10px;
+    font-size: 13px;
+    color: var(--color-red);
+  }
+}

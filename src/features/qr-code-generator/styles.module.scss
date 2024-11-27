@@ -1,0 +1,10 @@
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  row-gap: 10px;
+
+  .generatedQrCode {
+    width: 120px;
+    height: 120px;
+  }
+}

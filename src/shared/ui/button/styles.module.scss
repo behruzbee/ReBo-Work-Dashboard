@@ -1,0 +1,44 @@
+.button {
+  font-family: 'Poppins-SemiBold';
+  padding: 14px 18px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  outline: 1px solid var(--color-gray);
+  transition: scale 100ms ease-in-out;
+  transition: outline 100ms ease-in-out;
+
+  &:disabled {
+    opacity: 0.5;
+    pointer-events: none;
+  }
+
+  &.red {
+    color: var(--color-white);
+    background-color: var(--color-red);
+  }
+
+  &.blue {
+    color: var(--color-white);
+    background-color: var(--color-blue);
+  }
+
+  &.green {
+    color: var(--color-white);
+    background-color: var(--color-green);
+  }
+
+  .white {
+    color: var(--color-black);
+    background-color: var(--color-white);
+  }
+
+  &:hover {
+    scale: 1.05;
+    outline: 2px solid var(--color-blue);
+  }
+
+  &:focus {
+    outline: 2px solid var(--color-blue);
+  }
+}

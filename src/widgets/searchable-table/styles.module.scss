@@ -1,0 +1,26 @@
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  row-gap: 40px;
+
+  .inputWrapper {
+    display: flex;
+    column-gap: 10px;
+  }
+
+  .header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    .title {
+      font-family: 'Poppins-Medium';
+      font-size: 28px;
+    }
+
+    .headerButtons {
+        display: flex;
+        column-gap: 20px;
+    }
+  }
+}
