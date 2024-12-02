@@ -1,16 +1,15 @@
 export const WorkersPaths = {
   root: '/workers',
-  create: `/workers/create`,
-  update: `/workers/update/:id`
+  create: '/workers/create',
+  update: '/workers/update/:id'
 }
 export const PenaltiesPaths = {
   root: '/penalties',
-  create: `/penalties/create`,
-  update: `/penalties/update/:id`
+  create: '/penalties/create',
 }
 export const HistoriesPaths = {
   root: '/histories',
-  create: `/histories/create`
+  create: '/histories/create'
 }
 
 export const RouterPaths = {
