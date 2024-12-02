@@ -1,6 +1,5 @@
 .button {
   font-family: 'Poppins-SemiBold';
-  padding: 14px 18px;
   border: none;
   border-radius: 8px;
   cursor: pointer;
@@ -26,6 +25,24 @@
   &.green {
     color: var(--color-white);
     background-color: var(--color-green);
+  }
+
+  &.sm {
+    font-family: 'Poppins-Regular';
+    font-size: 12px;
+    padding: 10px 14px;
+  }
+
+  &.md {
+    font-family: 'Poppins-Medium';
+    font-size: 16px;
+    padding: 14px 18px;
+  }
+
+  &.lg {
+    font-family: 'Poppins-SemiBold';
+    font-size: 20px;
+    padding: 18px 22px;
   }
 
   .white {

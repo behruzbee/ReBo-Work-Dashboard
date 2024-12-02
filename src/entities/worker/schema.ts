@@ -3,7 +3,7 @@ import z from "zod";
 export const workerSchema = z.object({
   id: z.string({required_error: "ID bo'sh bo'lmasligi kerak!"}),
   name: z.string({required_error: "Ismni kiritish shart!"}),
-  firstName: z.string({required_error: "Familyani kiritish shart!"}),
+  lastName: z.string({required_error: "Familyani kiritish shart!"}),
   age: z.number({required_error: "Yosh kiritish shart!"}).int({message: "Yosh butun son bo'lishi kerak!"}).positive({message: "Yosh musbat bo'lishi kerak!"}),
   position: z.string({required_error: "Lavozimni kiritish shart!"}),
   hours_to_work: z.string({message: "Ish soatini kiritish shart!"}),

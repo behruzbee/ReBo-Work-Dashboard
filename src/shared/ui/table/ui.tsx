@@ -1,5 +1,6 @@
 
-import { flexRender, getCoreRowModel, useReactTable } from '@tanstack/react-table'
+import { useEffect } from 'react';
+import { flexRender, getCoreRowModel, getFilteredRowModel, getSortedRowModel, type SortingState, useReactTable } from '@tanstack/react-table'
 import { Link } from 'react-router-dom';
 
 import s from './styles.module.scss'
@@ -7,16 +8,30 @@ import s from './styles.module.scss'
 interface RTableProps<T> {
     data: T[];
     columns: any[];
+    filters?: { [key: string]: any }
+    sorting?: SortingState
 }
 
-
-// I used tanstack table headless ui
-const RTable = <T,>({ data, columns }: RTableProps<T>) => {
+const RTable = <T,>({ data, columns, sorting, filters }: RTableProps<T>) => {
     const table = useReactTable({
         data,
         columns,
+        state: {
+            sorting: sorting
+        },
         getCoreRowModel: getCoreRowModel(),
+        getFilteredRowModel: getFilteredRowModel(),
+        getSortedRowModel: getSortedRowModel(),
+        enableColumnFilters: true,
     })
+
+    useEffect(() => {
+        filters && table.setColumnFilters(Object.entries(filters).filter(([_, value]) => value !== undefined).map(([id, value]) => ({ id, value })))
+    }, [filters, table]);
+
+    if (!data.length) {
+        return <h1>Hech nima topilmadi 😲</h1>
+    }
 
     return (
         <table className={s.table}>
@@ -38,13 +53,13 @@ const RTable = <T,>({ data, columns }: RTableProps<T>) => {
                             cell.column.id === 'id'
                                 ? (
                                     <td key={cell.id}>
-                                        <Link to='/' className={s.link}>
+                                        <Link to='/' className={`${s.link} ${cell.column.id}`}>
                                             #{flexRender(cell.column.columnDef.cell, cell.getContext())}
                                         </Link>
                                     </td>
                                 )
                                 : (
-                                    <td key={cell.id} className={s.link}>
+                                    <td key={cell.id} className={cell.column.id}>
                                         {flexRender(cell.column.columnDef.cell, cell.getContext())}
                                     </td>
                                 )

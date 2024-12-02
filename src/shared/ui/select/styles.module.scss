@@ -1,0 +1,36 @@
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  font-family: 'Poppins-Regular';
+
+  label {
+    font-size: 16px;
+    margin-bottom: 16px;
+  }
+
+  select {
+    font-size: 16px;
+    border: 1px solid var(--color-gray);
+    border-radius: 3px;
+    padding: 13px 24px;
+    color: var(--color-black);
+    transition: all 150ms ease-in-out;
+    background-color: var(--color-white);
+    cursor: pointer;
+
+    &:focus {
+      outline: 1px solid var(--color-blue);
+      border-color: var(--color-blue);
+    }
+
+    &:hover {
+      border-color: var(--color-gray-dark);
+    }
+
+    &:disabled {
+      background-color: var(--color-gray-light);
+      color: var(--color-gray);
+      cursor: not-allowed;
+    }
+  }
+}

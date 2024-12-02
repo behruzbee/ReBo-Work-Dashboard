@@ -15,8 +15,9 @@ const LayoutPage = () => {
   return (
     <div className={s.wrapper}>
       <aside className={s.sidebar}>
-        <div>
+        <div className={s.logoWrapper}>
           <Link to={RouterPaths.root} className={s.logo}>ReBo.</Link>
+          <span>BETA V1</span>
         </div>
 
         <ul className={s.links}>

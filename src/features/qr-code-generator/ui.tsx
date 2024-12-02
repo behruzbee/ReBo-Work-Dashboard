@@ -2,15 +2,18 @@ import { useId, useState } from 'react'
 
 import { RInput, RInputProps } from '~shared/ui/input'
 import { RQrCode } from '~shared/ui/qr-code'
-
-import s from './styles.module.scss'
 import { RButton } from '~shared/ui/button'
 
-interface QrCodeGeneratorWithDownloadProps extends RInputProps {}
+import s from './styles.module.scss'
 
-const QrCodeGeneratorWithDownload = ({...props}: QrCodeGeneratorWithDownloadProps) => {
+interface QrCodeGeneratorWithDownloadProps extends Omit<RInputProps, 'defaultValue'> {
+  defaultValue?: string
+  workerId: string
+}
+
+const QrCodeGeneratorWithDownload = ({ defaultValue, workerId, ...props }: QrCodeGeneratorWithDownloadProps) => {
   const qrCodeId = useId()
-  const [qrCodeText, setQrCodeText] = useState('')
+  const [qrCodeText, setQrCodeText] = useState(defaultValue)
 
   const downloadHandler = () => {
     const canvas = document.getElementById(qrCodeId) as HTMLCanvasElement;
@@ -20,13 +23,14 @@ const QrCodeGeneratorWithDownload = ({...props}: QrCodeGeneratorWithDownloadProp
 
     const link = document.createElement('a');
     link.href = imageData;
-    link.download = `${qrCodeId}.png`;
+    link.download = `${qrCodeText}.png`;
     link.click();
   };
 
   return (
     <div className={s.wrapper}>
       <RInput
+        defaultValue={defaultValue}
         label='QR CODE'
         placeholder='Qr code kiriting!'
         onChange={(e: React.ChangeEvent<HTMLInputElement>) => setQrCodeText(e.target.value)}
@@ -34,7 +38,7 @@ const QrCodeGeneratorWithDownload = ({...props}: QrCodeGeneratorWithDownloadProp
       />
       <RQrCode
         id={qrCodeId}
-        value={qrCodeText}
+        value={`${workerId},${qrCodeText || defaultValue}`}
         className={s.generatedQrCode}
         width='120px'
         height='120px'

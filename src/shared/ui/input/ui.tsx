@@ -12,7 +12,7 @@ const RInput = ({ errorMessage, ...props }: RInputProps) => {
         <div className={s.wrapper}>
             {props.label &&
                 <label htmlFor={id}>
-                    {props.label}&nbsp;
+                    {props.label}
                     {props.required && <span>*</span>}
                 </label>
             }

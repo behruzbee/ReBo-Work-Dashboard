@@ -1,3 +1,17 @@
 @import url('./_reset.scss');
 @import url('./_vars.scss');
 @import url('./_fonts.scss');
+
+.is_working {
+  border-radius: 8px;
+  text-align: center;
+  span {
+    color: var(--color-white);
+  }
+  &:has(span[data-status='working']) {
+    background-color: var(--color-green);
+  }
+  &:has(span[data-status='not_working']) {
+    background-color: var(--color-red);
+  }
+}

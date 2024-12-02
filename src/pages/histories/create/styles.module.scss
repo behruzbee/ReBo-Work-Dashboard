@@ -1,0 +1,20 @@
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  width: 500px;
+  margin: 0 auto;
+  background: var(--color-white);
+  border-radius: 8px;
+  padding: 20px;
+  row-gap: 20px;
+
+  .title {
+    font-family: 'Poppins-SemiBold';
+    font-size: 28px;
+  }
+}
+.backButton {
+  position: sticky;
+  top: 20px;
+  left: 20px;
+}
