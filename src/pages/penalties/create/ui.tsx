@@ -60,9 +60,27 @@ const PenaltyCreatePage = () => {
                 <RForm
                     onSubmit={handleSubmit}
                     inputs={[
-                        <RSelect key='1' required label="Ishchi" name="worker_id" options={workersOptions} />,
-                        <RInput key='2' required placeholder="Kech qolgani uchun!" label="Sabab" name="description" errorMessage={errors["description"]} />,
-                        <SalaryInput key='3' required label="Miqdor" name="amount" errorMessage={errors["amount"]} />,
+                        <RSelect key='1'
+                            required
+                            label="Ishchi"
+                            name="worker_id"
+                            options={workersOptions}
+                            errorMessage={errors["worker_id"]}
+                            defaultOptionText="Ishchini Tanlang"
+                        />,
+                        <RInput key='2'
+                            required
+                            placeholder="Kech qolgani uchun!"
+                            label="Sabab"
+                            name="description"
+                            errorMessage={errors["description"]}
+                        />,
+                        <SalaryInput key='3'
+                            required
+                            label="Miqdor"
+                            name="amount"
+                            errorMessage={errors["amount"]}
+                        />,
                     ]}
                     buttonText="Qo'shish"
                 />

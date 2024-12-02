@@ -3,7 +3,7 @@ export interface IHistory {
   worker_id: string
   work_place_name: string
   scan_time: string
-  status_working: boolean
+  status_type: string
 }
 
 export interface ICreateHistory extends Omit<IHistory, 'id'> {}

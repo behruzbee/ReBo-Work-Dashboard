@@ -34,11 +34,11 @@ export const useColumns = () => {
             header: 'Skanerlangan vaqt',
             cell: info => new Date(info.getValue()).toLocaleString()
         }),
-        columnHelper.accessor('status_working', {
+        columnHelper.accessor('status_type', {
             header: 'Keldi/Ketti',
             cell: info => {
-                const status_working = info.getValue()
-                return status_working ? <span className={s.statusWorking} data-status='enter'>Ishga keldi</span> : <span className={s.statusWorking} data-status='exit'>Ishdan chiqdi</span>
+                const status_type = info.getValue()
+                return status_type === 'enter' ? <span className={s.statusWorking} data-status='enter'>Ishga keldi</span> : <span className={s.statusWorking} data-status='exit'>Ishdan chiqdi</span>
             }
         }),
         columnHelper.display({

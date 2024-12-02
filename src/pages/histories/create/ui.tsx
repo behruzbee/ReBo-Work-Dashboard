@@ -20,14 +20,10 @@ const HistoryCreatePage = () => {
     const { data: workers, isPending } = useGetWorkersQuery()
     const { mutate } = useCreateHistoryQuery()
 
-    const handleSubmit = (data: any) => {
+    const handleSubmit = (data: ICreateHistory) => {
         setErrors({})
-        const preparedData: ICreateHistory = {
-            ...data,
-            status_working: data.status_working === 'working' || data.status_working === 'not_selected' && null
-        }
 
-        const result = historySchema.safeParse(preparedData)
+        const result = historySchema.safeParse(data)
         if (result.success) {
             mutate(result.data)
             navigate(RouterPaths.histories.root)
@@ -58,9 +54,8 @@ const HistoryCreatePage = () => {
     ]
 
     const workingStatusOptions = [
-        { label: 'Tanlang', value: 'not_selected' },
-        { label: 'Ishga keldi', value: 'working' },
-        { label: 'Ishdan chiqdi', value: 'not_working' },
+        { label: 'Ishga keldi', value: 'enter' },
+        { label: 'Ishdan chiqdi', value: 'exit' },
     ]
 
     return (
@@ -72,13 +67,44 @@ const HistoryCreatePage = () => {
                 <h2 className={s.title}>Tarix qo'shish</h2>
                 <RForm
                     onSubmit={handleSubmit}
-                    inputs={[
-                        <RSelect key='1' required label="Ishchi" name="worker_id" options={workersOptions} />,
-                        <RSelect key='2' required-label="Ish joyi" name="work_place_name" options={historiesOptions} />,
-                        <RSelect key='3' required-label="Ish statusi" name="status_working" options={workingStatusOptions} />,
-                        <RInput key='4' required type="datetime-local" label="Skanerlangan Vaqt" name="scan_time" errorMessage={errors["scan_time"]} />,
-                    ]}
                     buttonText="Qo'shish"
+                    inputs={[
+                        <RSelect
+                            key='1'
+                            required
+                            label="Ishchi"
+                            name="worker_id"
+                            options={workersOptions}
+                            errorMessage={errors["worker_id"]}
+                            defaultOptionText="Ishchini tanlang"
+                        />,
+                        <RSelect
+                            key='2'
+                            required
+                            label="Ish joyi"
+                            name="work_place_name"
+                            options={historiesOptions}
+                            errorMessage={errors["work_place_name"]}
+                            defaultOptionText="Ish joyini tanlang"
+                        />,
+                        <RSelect
+                            key='3'
+                            required
+                            label="Ish statusi"
+                            name="status_type"
+                            options={workingStatusOptions}
+                            errorMessage={errors["status_working"]}
+                            defaultOptionText="Ish statusini tanlang"
+                        />,
+                        <RInput
+                            key='4'
+                            required
+                            type="datetime-local"
+                            label="Skanerlangan Vaqt"
+                            name="scan_time"
+                            errorMessage={errors["scan_time"]}
+                        />,
+                    ]}
                 />
             </div>
         </>

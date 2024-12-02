@@ -72,12 +72,12 @@ const WorkersPage = () => {
         <RSelect
           key='is_working'
           label="Ish statusi orqali qidirish"
+          onChange={(e: React.ChangeEvent<HTMLSelectElement>) => handleChangeSelect(e.target.value)}
+          defaultOptionText="Hammasi"
           options={[
-            { value: 'all', label: 'Hammasi' },
             { value: 'working', label: 'Ishda' },
             { value: 'not_working', label: 'Ishda emas' }
           ]}
-          onChange={(e: React.ChangeEvent<HTMLSelectElement>) => handleChangeSelect(e.target.value)}
         />
       ]}
     />
