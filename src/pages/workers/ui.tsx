@@ -26,7 +26,7 @@ const WorkersPage = () => {
   }
 
   const handleChangeSelect = (value: string) => {
-    const is_working = value === 'all' ? '' : value === 'working' ? true : false
+    const is_working = value === 'working' ? true : value === 'not_working' ? false : ''
     // @ts-ignore
     setFilters((prev) => ({ ...prev, is_working }))
   }
@@ -46,7 +46,7 @@ const WorkersPage = () => {
       data={data}
       columns={columns}
       filters={filters}
-      sorting={[{id: 'age', desc: true}]}
+      sorting={[{ id: 'age', desc: true }]}
       inputs={[
         <RInput
           value={filters.id}

@@ -12,8 +12,8 @@ const SalaryInput = ({ defaultValue, onChange, ...props }: SalaryInput) => {
 
     const handleOnChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         const value = e.target.value
-        const numericValue = value.replace(/\D/g, "");
-        if (Number(numericValue) !== 0) {
+        const numericValue = value.replace(/\d/g, "");
+        if (Number(numericValue) !== 0 && !isNaN(Number(numericValue))) {
             setValue(parseNumberWithSpaces(Number(numericValue)))
             onChange && onChange(numericValue)
         } else {

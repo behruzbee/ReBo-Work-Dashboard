@@ -31,10 +31,7 @@ const PenaltiesPage = () => {
     )
   }
 
-  const workersSelectOptions = () => {
-    const options = workers.map(worker => ({ label: `${worker.name} ${worker.lastName}`, value: worker.id }))
-    return [{ label: 'Hammasi', value: '' }, ...options]
-  }
+  const workersSelectOptions = workers.map(worker => ({ label: `${worker.name} ${worker.lastName}`, value: worker.id }))
 
   return (
     <SearchableTable
@@ -49,7 +46,8 @@ const PenaltiesPage = () => {
           value={filters.worker_id}
           onChange={(e: React.ChangeEvent<HTMLSelectElement>) => setFilters((prev) => ({ ...prev, worker_id: e.target.value }))}
           label="Ishchi orqali qidirish"
-          options={workersSelectOptions()}
+          options={workersSelectOptions}
+          defaultOptionText="Hammasi"
         />,
         <RInput
           key='description'
