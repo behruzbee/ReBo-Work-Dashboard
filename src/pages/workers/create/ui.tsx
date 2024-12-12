@@ -26,7 +26,7 @@ const WorkerCreatePage = () => {
             ...data,
             id,
             age: Number(data.age),
-            monthly_salary: Number(data.monthly_salary.toString().replace(/\s+/, '')),
+            monthly_salary: Number(data.monthly_salary.toString().replace(/\s+/ig, '')),
             monthly_worked_minutes: 0,
             status_working: 'not_working',
         }
