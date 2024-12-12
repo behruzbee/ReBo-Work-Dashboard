@@ -1,16 +1,17 @@
 import { useState } from "react";
+
 import { SearchableTable } from "~widgets/searchable-table"
+import { SalaryInput } from "~features/salary-input";
 import { useGetWorkersQuery } from "~entities/worker";
 import { useGetPenaltiesQuery } from "~entities/penalty";
 import { Spinner } from "~shared/ui/spinner"
 import { RSelect } from "~shared/ui/select";
 import { RInput } from "~shared/ui/input";
 import { RouterPaths } from "~shared/constants/router-path";
+import { parseNumberWithSpaces } from "~shared/libs/number-parser";
 
 import { useColumns } from "./columns";
 import s from './styles.module.scss';
-import { SalaryInput } from "~features/salary-input";
-import { parseNumberWithSpaces } from "~shared/libs/number-parser";
 
 const PenaltiesPage = () => {
   const columns = useColumns()
@@ -60,7 +61,7 @@ const PenaltiesPage = () => {
           key='amount'
           placeholder="200 000 so'm"
           value={filters.amount}
-          onChange={value => setFilters((prev) => ({ ...prev, amount: parseNumberWithSpaces(Number(value.replace(/\D/g, ''))) }))}
+          onChange={value => setFilters((prev) => ({ ...prev, amount: parseNumberWithSpaces(value)}))}
           label="Miqdor orqali qidirish"
         />
       ]}

@@ -1,7 +1,7 @@
 import { useMutation, useQuery } from '@tanstack/react-query'
 import { queryClient } from '~shared/libs/query-clients'
 
-import { IPenalty } from '../types/history'
+import { type ICreatePenalty } from '../types/history'
 import { getPenalties, createPenalty, deletePenalty } from './api'
 
 export const useGetPenaltiesQuery = () => {
@@ -17,7 +17,7 @@ export const useGetPenaltiesQuery = () => {
 export const useCreatePenaltyQuery = () => {
   const mutation = useMutation({
     mutationKey: ['penalties'],
-    mutationFn: (data: Omit<IPenalty, 'id' | 'time'>) => createPenalty(data),
+    mutationFn: (data: ICreatePenalty) => createPenalty(data),
     onSuccess: () => {
       queryClient.invalidateQueries({
         queryKey: ['penalties']

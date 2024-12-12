@@ -1,4 +1,4 @@
-export { type IPenalty } from './types/history'
+export { type IPenalty, type ICreatePenalty } from './types/history'
 
 export { useGetPenaltiesQuery, useCreatePenaltyQuery } from './api'
 

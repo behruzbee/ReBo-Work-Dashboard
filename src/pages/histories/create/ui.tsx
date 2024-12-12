@@ -22,8 +22,8 @@ const HistoryCreatePage = () => {
 
     const handleSubmit = (data: ICreateHistory) => {
         setErrors({})
-
         const result = historySchema.safeParse(data)
+        
         if (result.success) {
             mutate(result.data)
             navigate(RouterPaths.histories.root)
@@ -103,7 +103,7 @@ const HistoryCreatePage = () => {
                             label="Skanerlangan Vaqt"
                             name="scan_time"
                             errorMessage={errors["scan_time"]}
-                        />,
+                        />
                     ]}
                 />
             </div>

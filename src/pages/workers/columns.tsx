@@ -1,3 +1,4 @@
+import { useNavigate } from "react-router-dom"
 import { createColumnHelper } from "@tanstack/react-table"
 
 import { IWorker, useDeleteWorkerQuery } from "~entities/worker"
@@ -5,10 +6,8 @@ import { parseNumberWithSpaces } from "~shared/libs/number-parser"
 import { RButton } from "~shared/ui/button"
 
 import s from './styles.module.scss'
-import { useNavigate } from "react-router-dom"
 
 const columnHelper = createColumnHelper<IWorker>()
-
 
 export const useColumns = () => {
     const navigate = useNavigate()
@@ -27,9 +26,12 @@ export const useColumns = () => {
             header: 'Yosh',
             cell: info => info.getValue()
         }),
-        columnHelper.accessor('is_working', {
+        columnHelper.accessor('status_working', {
             header: 'Ish Status',
-            cell: info => info.getValue() ? <span data-status="working">Ishda</span> : <span data-status="not_working">Ishda emas</span>,
+            cell: info => {
+                const value = info.getValue()
+                return <span data-status={value}>{value === 'working' ? 'Ishda' : 'Ishda Emas'}</span>
+            },
         }),
         columnHelper.accessor('position', {
             header: 'Lavozim',

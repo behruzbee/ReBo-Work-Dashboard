@@ -17,18 +17,11 @@ const WorkersPage = () => {
     id: "",
     name: "",
     position: "",
-    is_working: null
+    status_working: ""
   })
-
 
   const handleChangeFilters = (key: keyof typeof filters, value: string) => {
     setFilters((prev) => ({ ...prev, [key]: value }))
-  }
-
-  const handleChangeSelect = (value: string) => {
-    const is_working = value === 'working' ? true : value === 'not_working' ? false : ''
-    // @ts-ignore
-    setFilters((prev) => ({ ...prev, is_working }))
   }
 
   if (isPending || !data) {
@@ -38,6 +31,11 @@ const WorkersPage = () => {
       </div>
     )
   }
+
+  const isWorkingOptions = [
+    {label: "Ishda", value: "working"},
+    {label: "Ishda Emas", value: "not_working"},
+  ]
 
   return (
     <SearchableTable
@@ -72,12 +70,9 @@ const WorkersPage = () => {
         <RSelect
           key='is_working'
           label="Ish statusi orqali qidirish"
-          onChange={(e: React.ChangeEvent<HTMLSelectElement>) => handleChangeSelect(e.target.value)}
+          onChange={(e: React.ChangeEvent<HTMLSelectElement>) => handleChangeFilters('status_working', e.target.value)}
           defaultOptionText="Hammasi"
-          options={[
-            { value: 'working', label: 'Ishda' },
-            { value: 'not_working', label: 'Ishda emas' }
-          ]}
+          options={isWorkingOptions}
         />
       ]}
     />

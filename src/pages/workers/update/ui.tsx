@@ -1,6 +1,5 @@
 import { useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
-import { nanoid } from "nanoid";
 import { toast } from "react-toastify";
 
 import { type IWorker, useUpdateWorkerQuery, useGetWorkerQuery, workerSchema } from "~entities/worker";
@@ -11,9 +10,9 @@ import { RButton } from "~shared/ui/button";
 import { RIcon } from "~shared/ui/icon";
 import { RForm } from "~shared/ui/form";
 import { RInput } from "~shared/ui/input";
+import { Spinner } from "~shared/ui/spinner";
 
 import s from './styles.module.scss'
-import { Spinner } from "~shared/ui/spinner";
 
 const UpdateWorkerPage = () => {
     const navigate = useNavigate()
@@ -23,13 +22,13 @@ const UpdateWorkerPage = () => {
     const [errors, setErrors] = useState<Record<string, string>>({});
     const { mutate } = useUpdateWorkerQuery()
 
-    const handleSubmit = (data: any) => {
+    const handleSubmit = (data: IWorker) => {
         setErrors({})
         const preparedData: IWorker = {
             ...worker,
             ...data,
             age: Number(data.age),
-            monthly_salary: Number(data.monthly_salary.replace(/\D/g, ''))
+            monthly_salary: Number(data.monthly_salary.toString().replace(/\s+/, '')),
         }
 
         const result = workerSchema.safeParse(preparedData)

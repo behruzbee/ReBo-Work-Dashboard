@@ -2,7 +2,8 @@ import { useState } from "react"
 import { useNavigate } from "react-router-dom"
 import { toast } from "react-toastify";
 
-import { penaltySchema, type IPenalty, useCreatePenaltyQuery } from "~entities/penalty";
+import { SalaryInput } from "~features/salary-input";
+import { penaltySchema, useCreatePenaltyQuery, type ICreatePenalty } from "~entities/penalty";
 import { useGetWorkersQuery } from "~entities/worker";
 import { RForm } from "~shared/ui/form"
 import { RIcon } from "~shared/ui/icon"
@@ -13,7 +14,6 @@ import { RSelect } from "~shared/ui/select";
 import { RouterPaths } from "~shared/constants/router-path";
 
 import s from './styles.module.scss'
-import { SalaryInput } from "~features/salary-input";
 
 const PenaltyCreatePage = () => {
     const navigate = useNavigate()
@@ -21,11 +21,11 @@ const PenaltyCreatePage = () => {
     const { data: workers, isPending } = useGetWorkersQuery()
     const { mutate } = useCreatePenaltyQuery()
 
-    const handleSubmit = (data: any) => {
+    const handleSubmit = (data: ICreatePenalty) => {
         setErrors({})
-        const preparedData: IPenalty = {
+        const preparedData: ICreatePenalty = {
             ...data,
-            amount: Number(data.amount.replace(/\d/g, ''))
+            amount: Number(data.amount.toString().replace(/\s+/, ''))
         }
 
         const result = penaltySchema.safeParse(preparedData)

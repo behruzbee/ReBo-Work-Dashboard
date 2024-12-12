@@ -2,7 +2,7 @@ import { createColumnHelper } from "@tanstack/react-table"
 
 import { type IPenalty } from "~entities/penalty"
 import { useDeletePenaltyQuery } from "~entities/penalty/api"
-import { IWorker, useGetWorkersQuery } from "~entities/worker"
+import { useGetWorkersQuery } from "~entities/worker"
 import { parseNumberWithSpaces } from "~shared/libs/number-parser"
 import { RButton } from "~shared/ui/button"
 

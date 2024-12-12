@@ -1,7 +1,7 @@
 import { toast } from 'react-toastify'
 import { apiInstance } from '~shared/api'
 
-import { IPenalty } from '../types/history'
+import { type ICreatePenalty, type IPenalty } from '../types/history'
 
 export const getPenalties = async () => {
   try {
@@ -13,7 +13,7 @@ export const getPenalties = async () => {
   }
 }
 
-export const createPenalty = async (penalty: Omit<IPenalty, 'id' | 'time'>) => {
+export const createPenalty = async (penalty: ICreatePenalty) => {
   try {
     const newWorker = await apiInstance.post<IPenalty>('/penalty', penalty)
     toast.success("Jarima muvaffaqiyatli qo'shildi!")

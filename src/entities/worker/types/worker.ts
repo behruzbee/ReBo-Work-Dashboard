@@ -6,8 +6,7 @@ export interface IWorker {
   position: string
   hours_to_work: string
   monthly_salary: number
-  is_working: boolean
+  status_working: 'working' | 'not_working'
   monthly_worked_minutes: number
   qr_code_text: string
-  // penalties: IPenalty[]
 }

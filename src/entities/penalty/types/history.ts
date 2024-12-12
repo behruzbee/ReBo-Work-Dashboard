@@ -5,3 +5,5 @@ export interface IPenalty {
   amount: number
   time: string
 }
+
+export interface ICreatePenalty extends Omit<IPenalty, 'id' |'time'> {}

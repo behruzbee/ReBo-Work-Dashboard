@@ -20,18 +20,19 @@ const WorkerCreatePage = () => {
     const [errors, setErrors] = useState<Record<string, string>>({});
     const { mutate } = useCreateWorkerQuery()
 
-    const handleSubmit = (data: any) => {
+    const handleSubmit = (data: IWorker) => {
         setErrors({})
         const preparedData: IWorker = {
             ...data,
             id,
             age: Number(data.age),
-            monthly_salary: Number(data.monthly_salary.replace(/\D/g, '')),
+            monthly_salary: Number(data.monthly_salary.toString().replace(/\s+/, '')),
             monthly_worked_minutes: 0,
-            is_working: false,
+            status_working: 'not_working',
         }
 
         const result = workerSchema.safeParse(preparedData)
+        console.log(result);
         if (result.success) {
             mutate(result.data)
             navigate(RouterPaths.workers.root)

@@ -38,7 +38,9 @@ export const useColumns = () => {
             header: 'Keldi/Ketti',
             cell: info => {
                 const status_type = info.getValue()
-                return status_type === 'enter' ? <span className={s.statusWorking} data-status='enter'>Ishga keldi</span> : <span className={s.statusWorking} data-status='exit'>Ishdan chiqdi</span>
+                return status_type === 'enter'
+                    ? <span className={s.statusWorking} data-status='enter'>Ishga keldi</span>
+                    : <span className={s.statusWorking} data-status='exit'>Ishdan chiqdi</span>
             }
         }),
         columnHelper.display({
