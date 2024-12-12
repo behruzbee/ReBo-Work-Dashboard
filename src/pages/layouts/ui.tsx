@@ -8,7 +8,8 @@ import s from './styles.module.scss';
 const LINKS = [
   { path: RouterPaths.workers.root, icon: 'male', text: "Ishchilar" },
   { path: RouterPaths.histories.root, icon: 'history', text: "Tarix" },
-  { path: RouterPaths.penalties.root, icon: 'money', text: "Jarimalar" },
+  { path: RouterPaths.penalties.root, icon: 'money-withdraw ', text: "Jarimalar" },
+  { path: RouterPaths.bonuses.root, icon: 'money', text: "Bonuslar" },
 ]
 
 const LayoutPage = () => {
