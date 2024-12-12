@@ -25,7 +25,7 @@ const PenaltyCreatePage = () => {
         setErrors({})
         const preparedData: ICreatePenalty = {
             ...data,
-            amount: Number(data.amount.toString().replace(/\s+/, ''))
+            amount: Number(data.amount.toString().replace(/\s+/ig, ''))
         }
 
         const result = penaltySchema.safeParse(preparedData)

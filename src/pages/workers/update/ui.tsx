@@ -28,7 +28,7 @@ const UpdateWorkerPage = () => {
             ...worker,
             ...data,
             age: Number(data.age),
-            monthly_salary: Number(data.monthly_salary.toString().replace(/\s+/, '')),
+            monthly_salary: Number(data.monthly_salary.toString().replace(/\s+/ig, '')),
         }
 
         const result = workerSchema.safeParse(preparedData)
