@@ -1,7 +1,7 @@
 import { useMutation, useQuery } from '@tanstack/react-query'
 import { queryClient } from '~shared/libs/query-clients'
 
-import { type ICreatePenalty } from '../types/history'
+import { type ICreatePenalty } from '../types/penalty'
 import { getPenalties, createPenalty, deletePenalty } from './api'
 
 export const useGetPenaltiesQuery = () => {

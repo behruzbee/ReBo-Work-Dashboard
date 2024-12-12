@@ -1,7 +1,7 @@
 import { toast } from 'react-toastify'
 import { apiInstance } from '~shared/api'
 
-import { type ICreatePenalty, type IPenalty } from '../types/history'
+import { type ICreatePenalty, type IPenalty } from '../types/penalty'
 
 export const getPenalties = async () => {
   try {
