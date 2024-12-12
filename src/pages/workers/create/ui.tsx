@@ -1,7 +1,7 @@
 import { useState } from "react"
 import { useNavigate } from "react-router-dom"
 import { toast } from "react-toastify";
-import { nanoid } from 'nanoid';
+import { customAlphabet } from 'nanoid';
 
 import { QrCodeGeneratorWithDownload } from "~features/qr-code-generator"
 import { SalaryInput } from "~features/salary-input";
@@ -14,8 +14,10 @@ import { RInput } from "~shared/ui/input";
 import s from './styles.module.scss'
 import { RouterPaths } from "~shared/constants/router-path";
 
+const generateNumericId = customAlphabet("0123456789", 15);
+
 const WorkerCreatePage = () => {
-    const id = nanoid(10)
+    const id = generateNumericId(10)
     const navigate = useNavigate()
     const [errors, setErrors] = useState<Record<string, string>>({});
     const { mutate } = useCreateWorkerQuery()
@@ -32,7 +34,6 @@ const WorkerCreatePage = () => {
         }
 
         const result = workerSchema.safeParse(preparedData)
-        console.log(result);
         if (result.success) {
             mutate(result.data)
             navigate(RouterPaths.workers.root)
