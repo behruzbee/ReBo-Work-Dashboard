@@ -1,4 +1,4 @@
-import { useNavigate } from "react-router-dom"
+import { Link, useNavigate } from "react-router-dom"
 import { createColumnHelper } from "@tanstack/react-table"
 
 import { IWorker, useDeleteWorkerQuery } from "~entities/worker"
@@ -16,7 +16,10 @@ export const useColumns = () => {
     const columns = [
         columnHelper.accessor('id', {
             header: 'ID',
-            cell: info => info.getValue()
+            cell: info => {
+                const id = info.getValue()
+                return <Link to={`/worker/${id}`}>{id}</Link>
+            }
         }),
         columnHelper.accessor('name', {
             header: 'Ism',
@@ -32,6 +35,9 @@ export const useColumns = () => {
                 const value = info.getValue()
                 return <span data-status={value}>{value === 'working' ? 'Ishda' : 'Ishda Emas'}</span>
             },
+            filterFn: (info, _, filteringValue) => {
+                return info.original.status_working === filteringValue
+            }
         }),
         columnHelper.accessor('position', {
             header: 'Lavozim',

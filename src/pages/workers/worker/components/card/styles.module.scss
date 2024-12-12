@@ -1,0 +1,67 @@
+.cardInfo {
+    width: 370px;
+    height: 150px;
+    display: flex;
+    align-items: center;
+    padding: 19px;
+    background-color: var(--color-white);
+    border-radius: 25px;
+
+    
+    .cardInfoLeft {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 85px;
+      height: 85px;
+      border-radius: 50%;
+      .cardInfoIcon {
+        font-size: 50px;
+      }
+    }
+
+    .cardInfoRight {
+      display: flex;
+      row-gap: 10px;
+      flex-direction: column;
+      margin-left: 20px;
+      
+      .cardInfoTitle {
+        font-family: 'Poppins-Medium';
+        font-size: 18px;
+        color: #50658a;
+      }
+      
+      .cardInfoValue {
+        font-family: 'Poppins-SemiBold';
+        font-size: 25px;
+      }
+    }
+
+    &.bonus {
+      .cardInfoLeft {
+        background-color: #bbe7e4;
+        .cardInfoIcon {
+          color: #00a999;
+        }
+      }
+    }
+
+    &.penalty {
+      .cardInfoLeft {
+        background-color: #E5BBC9;
+        .cardInfoIcon {
+          color: #C55479;
+        }
+      }
+    }
+
+    &.workingHours {
+      .cardInfoLeft {
+        background-color: #C7CFE9;
+        .cardInfoIcon {
+          color: #1E43B5;
+        }
+      }
+    }
+  }

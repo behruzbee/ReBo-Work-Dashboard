@@ -1,7 +1,6 @@
 
 import { useEffect } from 'react';
 import { flexRender, getCoreRowModel, getFilteredRowModel, getSortedRowModel, type SortingState, useReactTable } from '@tanstack/react-table'
-import { Link } from 'react-router-dom';
 
 import s from './styles.module.scss'
 
@@ -50,19 +49,9 @@ const RTable = <T,>({ data, columns, sorting, filters }: RTableProps<T>) => {
                 {table.getRowModel().rows.map(row => (
                     <tr key={row.id}>
                         {row.getVisibleCells().map(cell => (
-                            cell.column.id === 'id'
-                                ? (
-                                    <td key={cell.id}>
-                                        <Link to='/' className={`${s.link} ${cell.column.id}`}>
-                                            #{flexRender(cell.column.columnDef.cell, cell.getContext())}
-                                        </Link>
-                                    </td>
-                                )
-                                : (
-                                    <td key={cell.id} className={cell.column.id}>
-                                        {flexRender(cell.column.columnDef.cell, cell.getContext())}
-                                    </td>
-                                )
+                            <td key={cell.id} className={cell.column.id}>
+                                {flexRender(cell.column.columnDef.cell, cell.getContext())}
+                            </td>
                         ))}
                     </tr>
                 ))}

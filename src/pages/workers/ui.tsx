@@ -32,7 +32,7 @@ const WorkersPage = () => {
     )
   }
 
-  const isWorkingOptions = [
+  const statusWorkingOptions = [
     {label: "Ishda", value: "working"},
     {label: "Ishda Emas", value: "not_working"},
   ]
@@ -68,11 +68,11 @@ const WorkersPage = () => {
           onChange={(e: React.ChangeEvent<HTMLInputElement>) => handleChangeFilters('position', e.target.value)}
         />,
         <RSelect
-          key='is_working'
+          key='status_working'
           label="Ish statusi orqali qidirish"
           onChange={(e: React.ChangeEvent<HTMLSelectElement>) => handleChangeFilters('status_working', e.target.value)}
           defaultOptionText="Hammasi"
-          options={isWorkingOptions}
+          options={statusWorkingOptions}
         />
       ]}
     />

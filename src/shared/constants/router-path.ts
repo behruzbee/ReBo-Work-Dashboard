@@ -1,5 +1,6 @@
 export const WorkersPaths = {
   root: '/workers',
+  worker: '/worker/:id',
   create: '/workers/create',
   update: '/workers/update/:id'
 }

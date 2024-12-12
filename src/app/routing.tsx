@@ -3,7 +3,7 @@ import { createBrowserRouter, Navigate } from "react-router-dom";
 import { LayoutPage } from "~pages/layouts";
 import { HistoriesPage, HistoryCreatePage } from "~pages/histories";
 import { PenaltiesPage, PenaltyCreatePage } from "~pages/penalties";
-import { UpdateWorkerPage, WorkerCreatePage, WorkersPage } from "~pages/workers";
+import { UpdateWorkerPage, WorkerCreatePage, WorkerPage, WorkersPage } from "~pages/workers";
 import { RouterPaths } from "~shared/constants/router-path";
 
 export const router = createBrowserRouter([
@@ -11,6 +11,7 @@ export const router = createBrowserRouter([
         element: <LayoutPage />,
         children: [
             { path: RouterPaths.workers.root, element: <WorkersPage /> },
+            { path: RouterPaths.workers.worker, element: <WorkerPage /> },
             { path: RouterPaths.workers.create, element: <WorkerCreatePage /> },
             { path: RouterPaths.workers.update, element: <UpdateWorkerPage /> },
             { path: RouterPaths.histories.root, element: <HistoriesPage /> },

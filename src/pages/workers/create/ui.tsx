@@ -10,9 +10,9 @@ import { RForm } from "~shared/ui/form"
 import { RIcon } from "~shared/ui/icon"
 import { RButton } from "~shared/ui/button"
 import { RInput } from "~shared/ui/input";
+import { RouterPaths } from "~shared/constants/router-path";
 
 import s from './styles.module.scss'
-import { RouterPaths } from "~shared/constants/router-path";
 
 const generateNumericId = customAlphabet("0123456789", 15);
 

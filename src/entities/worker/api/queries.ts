@@ -22,7 +22,7 @@ export const useGetWorkersQuery = () => {
 
 export const useGetWorkerQuery = (id: string) => {
   const query = useQuery({
-    queryKey: ['workers'],
+    queryKey: ['worker'],
     queryFn: () => getWorker(id)
   })
 

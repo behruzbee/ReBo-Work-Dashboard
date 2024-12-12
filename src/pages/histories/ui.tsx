@@ -30,7 +30,6 @@ const HistoriesPage = () => {
     )
   }
 
-
   const workersSelectOptions = workers.map(worker => ({ label: `${worker.name} ${worker.lastName}`, value: worker.id }))
 
   return (

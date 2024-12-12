@@ -6,7 +6,7 @@ interface RIconProps {
 
 const RIcon = ({ name, className }: RIconProps) => {
     return (
-        <i className={`bx bx-${name} ${className}`}></i>
+        <i className={`bx bx-${name} ${className || ''}`}></i>
     )
 }
 
