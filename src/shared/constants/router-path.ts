@@ -17,10 +17,15 @@ export const HistoriesPaths = {
   create: '/histories/create'
 }
 
+export const AuthPaths = {
+  login: "/login",
+}
+
 export const RouterPaths = {
   root: '/',
   workers: WorkersPaths,
   penalties: PenaltiesPaths,
   bonuses: BonusesPaths,
-  histories: HistoriesPaths
+  histories: HistoriesPaths,
+  auth: AuthPaths
 }

@@ -16,21 +16,28 @@ const LayoutPage = () => {
   return (
     <div className={s.wrapper}>
       <aside className={s.sidebar}>
-        <div className={s.logoWrapper}>
-          <Link to={RouterPaths.root} className={s.logo}>ReBo.</Link>
-          <span>BETA V1</span>
+        <div>
+          <div className={s.logoWrapper}>
+            <Link to={RouterPaths.root} className={s.logo}>ReBo.</Link>
+            <span>BETA V1</span>
+          </div>
+
+          <ul className={s.links}>
+            {LINKS.map((link) => (
+              <li key={link.text}>
+                <NavLink to={link.path} className={({ isActive }) => isActive ? `${s.link} ${s.active}` : `${s.link}`} end={false}>
+                  <RIcon name={link.icon} />
+                  {link.text}
+                </NavLink>
+              </li>
+            ))}
+          </ul>
         </div>
 
-        <ul className={s.links}>
-          {LINKS.map((link) => (
-            <li key={link.text}>
-              <NavLink to={link.path} className={({ isActive }) => isActive ? s.active : ''} end={false}>
-                <RIcon name={link.icon} />
-                {link.text}
-              </NavLink>
-            </li>
-          ))}
-        </ul>
+        <NavLink className={s.link} to={RouterPaths.auth.login}>
+          <RIcon name='exit' />
+          Chiqish
+        </NavLink>
       </aside>
       <div className={s.content}>
         <Outlet />

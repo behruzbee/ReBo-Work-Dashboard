@@ -7,14 +7,16 @@
     min-width: 230px;
     display: flex;
     flex-direction: column;
-    row-gap: 58px;
+    justify-content: space-between;
     background-color: var(--color-white);
-    margin-top: 55px;
+    padding-top: 55px;
+    padding-bottom: 25px;
 
     .logoWrapper {
       display: flex;
       flex-direction: column;
       padding-left: 23px;
+      padding-bottom: 40px;
 
       .logo {
         font-size: 28px;
@@ -32,52 +34,50 @@
     .links {
       display: flex;
       flex-direction: column;
-      li {
-        position: relative;
+    }
 
-        a {
-          display: inline-flex;
-          align-items: center;
-          width: 227px;
-          padding-left: 38px;
-          padding-top: 15px;
-          padding-bottom: 15px;
-          font-family: 'Poppins-Regular';
-          font-size: 16px;
-          color: var(--color-gray);
-          transition: color 100ms ease-in-out;
+    .link {
+      position: relative;
+      display: inline-flex;
+      align-items: center;
+      width: 227px;
+      padding-left: 38px;
+      padding-top: 15px;
+      padding-bottom: 15px;
+      font-family: 'Poppins-Regular';
+      font-size: 16px;
+      color: var(--color-gray);
+      transition: color 100ms ease-in-out;
 
-          &.active {
-            color: var(--color-blue);
-          }
+      &.active {
+        color: var(--color-blue);
+      }
 
-          i {
-            font-size: 23px;
-            padding-right: 5px;
-          }
+      i {
+        font-size: 23px;
+        padding-right: 5px;
+      }
 
-          &::before {
-            content: '';
-            display: block;
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 3px;
-            height: 0;
-            background-color: var(--color-blue);
-            transition: height 100ms ease-in-out;
-          }
-          &.active::before {
-            height: 100%;
-          }
+      &::before {
+        content: '';
+        display: block;
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 3px;
+        height: 0;
+        background-color: var(--color-blue);
+        transition: height 100ms ease-in-out;
+      }
+      &.active::before {
+        height: 100%;
+      }
 
-          &:hover {
-            color: var(--color-blue);
-          }
-          &:hover::before {
-            height: 100%;
-          }
-        }
+      &:hover {
+        color: var(--color-blue);
+      }
+      &:hover::before {
+        height: 100%;
       }
     }
   }

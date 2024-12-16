@@ -5,11 +5,12 @@ import s from './style.module.scss'
 
 interface RFormProps {
     buttonText: string
+    isLoading?: boolean
     inputs?: ReactNode[]
     onSubmit?: (data: any) => void
 }
 
-const RForm = ({ buttonText, inputs, onSubmit }: RFormProps) => {
+const RForm = ({ buttonText, inputs, isLoading, onSubmit }: RFormProps) => {
 
     const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault()
@@ -21,7 +22,7 @@ const RForm = ({ buttonText, inputs, onSubmit }: RFormProps) => {
     return (
         <form onSubmit={handleSubmit} className={s.form}>
             {inputs}
-            <RButton type='submit' color='blue'>
+            <RButton disabled={isLoading} type='submit' color='blue'>
                 {buttonText}
             </RButton>
         </form>
