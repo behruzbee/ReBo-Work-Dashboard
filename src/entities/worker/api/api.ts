@@ -1,3 +1,4 @@
+import axios from 'axios'
 import { apiInstance } from '~shared/api'
 
 import { IWorker } from '../types/worker'
@@ -8,8 +9,11 @@ export const getWorkers = async () => {
     const workers = await apiInstance.get<IWorker[]>('/workers')
     return workers.data
   } catch (error) {
-    toast.error('Ishchilarni yuklashda xatolik!')
-    console.error('Error fetching when get workers:', error)
+    if (axios.isAxiosError(error)) {
+      const serverError = error.response
+      toast.error(serverError.data.error)
+    }
+    console.error(error)
   }
 }
 
@@ -18,8 +22,11 @@ export const getWorker = async (id: string) => {
     const workers = await apiInstance.get<IWorker>('/worker/' + id)
     return workers.data
   } catch (error) {
-    toast.error('Ishchini yuklashda xatolik!')
-    console.error('Error fetching when get workers:', error)
+    if (axios.isAxiosError(error)) {
+      const serverError = error.response
+      toast.error(serverError.data.error)
+    }
+    console.error(error)
   }
 }
 
@@ -29,8 +36,11 @@ export const createWorker = async (worker: IWorker) => {
     toast.success("Ishchi muvaffaqiyatli qo'shildi!")
     return newWorker
   } catch (error) {
-    toast.error("Ishchini qo'shishda xatolik!")
-    console.error('Error fetching when create workers:', error)
+    if (axios.isAxiosError(error)) {
+      const serverError = error.response
+      toast.error(serverError.data.error)
+    }
+    console.error(error)
   }
 }
 
@@ -40,18 +50,27 @@ export const deleteWorker = async (id: string) => {
     toast.success("Ishchi muvaffaqiyatli o'chirildi!")
     return newWorker
   } catch (error) {
-    toast.error("Ishchini o'chirishda xatolik!")
-    console.error('Error fetching when delete workers:', error)
+    if (axios.isAxiosError(error)) {
+      const serverError = error.response
+      toast.error(serverError.data.error)
+    }
+    console.error(error)
   }
 }
 
 export const updateWorker = async (worker: IWorker) => {
   try {
-    const updatedWorker = await apiInstance.patch('/worker/' + worker.id, worker )
+    const updatedWorker = await apiInstance.patch(
+      '/worker/' + worker.id,
+      worker
+    )
     toast.success("Ishchi muvaffaqiyatli o'zgartirildi!")
     return updatedWorker
   } catch (error) {
-    toast.error("Ishchini o'zgartirishda xatolik!")
-    console.error('Error fetching when update workers:', error)
+    if (axios.isAxiosError(error)) {
+      const serverError = error.response
+      toast.error(serverError.data.error)
+    }
+    console.error(error)
   }
 }

@@ -1,3 +1,4 @@
+import axios from 'axios'
 import { toast } from 'react-toastify'
 import { apiInstance } from '~shared/api'
 
@@ -8,8 +9,11 @@ export const getPenalties = async () => {
     const workers = await apiInstance.get<IPenalty[]>('/penalties')
     return workers.data
   } catch (error) {
-    toast.error('Jarimalar yuklashda xatolik!')
-    console.error('Error fetching when get penalties:', error)
+    if (axios.isAxiosError(error)) {
+      const serverError = error.response
+      toast.error(serverError.data.error)
+    }
+    console.error(error)
   }
 }
 
@@ -19,8 +23,11 @@ export const createPenalty = async (penalty: ICreatePenalty) => {
     toast.success("Jarima muvaffaqiyatli qo'shildi!")
     return newWorker
   } catch (error) {
-    toast.error("Jarima qo'shishda xatolik!")
-    console.error('Error fetching when create penalty:', error)
+    if (axios.isAxiosError(error)) {
+      const serverError = error.response
+      toast.error(serverError.data.error)
+    }
+    console.error(error)
   }
 }
 
@@ -30,7 +37,10 @@ export const deletePenalty = async (id: string) => {
     toast.success("Jarima muvaffaqiyatli o'chirildi!")
     return newWorker
   } catch (error) {
-    toast.error("Jarima o'chirishda xatolik!")
-    console.error('Error fetching when create penalty:', error)
+    if (axios.isAxiosError(error)) {
+      const serverError = error.response
+      toast.error(serverError.data.error)
+    }
+    console.error(error)
   }
 }
