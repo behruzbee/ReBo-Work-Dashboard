@@ -9,7 +9,7 @@ export const getUsers = async () => {
     const users = await apiInstance.get<IUser[]>('/users')
     return users.data
   } catch (error) {
-    if (axios.isAxiosError(error)) {
+    if (axios.isAxiosError(error) && error.response) {
       const serverError = error.response
       toast.error(serverError.data.error)
     }
@@ -22,7 +22,7 @@ export const getUser = async (username: string) => {
     const users = await apiInstance.get<IUser>('/user/' + username)
     return users.data
   } catch (error) {
-    if (axios.isAxiosError(error)) {
+    if (axios.isAxiosError(error) && error.response) {
       const serverError = error.response
       toast.error(serverError.data.error)
     }
@@ -36,8 +36,8 @@ export const createUser = async (user: ICreateUser) => {
     toast.success("Ishchi muvaffaqiyatli qo'shildi!")
     return newUser.data
   } catch (error) {
-    console.log(error);
-    if (axios.isAxiosError(error)) {
+    console.log(error)
+    if (axios.isAxiosError(error) && error.response) {
       const serverError = error.response
       toast.error(serverError.data.error)
     }
@@ -51,7 +51,7 @@ export const deleteUser = async (username: string) => {
     toast.success("Ishchi muvaffaqiyatli o'chirildi!")
     return newUser.data
   } catch (error) {
-    if (axios.isAxiosError(error)) {
+    if (axios.isAxiosError(error) && error.response) {
       const serverError = error.response
       toast.error(serverError.data.error)
     }
@@ -68,7 +68,7 @@ export const updateUser = async (user: ICreateUser) => {
     toast.success("Ishchi muvaffaqiyatli o'zgartirildi!")
     return updatedUser.data
   } catch (error) {
-    if (axios.isAxiosError(error)) {
+    if (axios.isAxiosError(error) && error.response) {
       const serverError = error.response
       toast.error(serverError.data.error)
     }
@@ -81,7 +81,7 @@ export const getMe = async () => {
     const updatedUser = await apiInstance.get<IUser>('/me')
     return updatedUser.data
   } catch (error) {
-    if (axios.isAxiosError(error)) {
+    if (axios.isAxiosError(error) && error.response) {
       const serverError = error.response
       toast.error(serverError.data.error)
     }

@@ -9,11 +9,11 @@ export const getHistories = async () => {
     const workers = await apiInstance.get<IHistory[]>('/histories')
     return workers.data
   } catch (error) {
-    if (axios.isAxiosError(error)) {
+    if (axios.isAxiosError(error) && error.response) {
       const serverError = error.response
       toast.error(serverError.data.error)
     }
-    console.error(error);
+    console.error(error)
   }
 }
 
@@ -23,11 +23,11 @@ export const createHistory = async (worker: ICreateHistory) => {
     toast.success("Tarix muvaffaqiyatli qo'shildi!")
     return newWorker
   } catch (error) {
-    if (axios.isAxiosError(error)) {
+    if (axios.isAxiosError(error) && error.response) {
       const serverError = error.response
       toast.error(serverError.data.error)
     }
-    console.error(error);
+    console.error(error)
   }
 }
 
@@ -37,10 +37,10 @@ export const deleteHistory = async (id: string) => {
     toast.success("Tarix muvaffaqiyatli o'chirildi!")
     return newWorker
   } catch (error) {
-    if (axios.isAxiosError(error)) {
+    if (axios.isAxiosError(error) && error.response) {
       const serverError = error.response
       toast.error(serverError.data.error)
     }
-    console.error(error);
+    console.error(error)
   }
 }

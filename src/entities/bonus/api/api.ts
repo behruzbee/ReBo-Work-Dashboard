@@ -9,38 +9,38 @@ export const getBonuses = async () => {
     const workers = await apiInstance.get<IBonus[]>('/bonuses')
     return workers.data
   } catch (error) {
-    if (axios.isAxiosError(error)) {
+    if (axios.isAxiosError(error) && error.response) {
       const serverError = error.response
       toast.error(serverError.data.error)
     }
-    console.error(error);
+    console.error(error)
   }
 }
 
 export const createBonus = async (bonus: ICreateBonus) => {
   try {
     const newWorker = await apiInstance.post<IBonus>('/bonus', bonus)
-    toast.success("Jarima muvaffaqiyatli qo'shildi!")
+    toast.success("Bonus muvaffaqiyatli qo'shildi!")
     return newWorker
   } catch (error) {
-    if (axios.isAxiosError(error)) {
+    if (axios.isAxiosError(error) && error.response) {
       const serverError = error.response
       toast.error(serverError.data.error)
     }
-    console.error(error);
+    console.error(error)
   }
 }
 
 export const deleteBonus = async (id: string) => {
   try {
     const newWorker = await apiInstance.delete<IBonus>('/bonus/' + id)
-    toast.success("Jarima muvaffaqiyatli o'chirildi!")
+    toast.success("Bonus muvaffaqiyatli o'chirildi!")
     return newWorker
   } catch (error) {
-    if (axios.isAxiosError(error)) {
+    if (axios.isAxiosError(error) && error.response) {
       const serverError = error.response
       toast.error(serverError.data.error)
     }
-    console.error(error);
+    console.error(error)
   }
 }

@@ -9,7 +9,7 @@ export const getWorkers = async () => {
     const workers = await apiInstance.get<IWorker[]>('/workers')
     return workers.data
   } catch (error) {
-    if (axios.isAxiosError(error)) {
+    if (axios.isAxiosError(error) && error.response) {
       const serverError = error.response
       toast.error(serverError.data.error)
     }
@@ -22,7 +22,7 @@ export const getWorker = async (id: string) => {
     const workers = await apiInstance.get<IWorker>('/worker/' + id)
     return workers.data
   } catch (error) {
-    if (axios.isAxiosError(error)) {
+    if (axios.isAxiosError(error) && error.response) {
       const serverError = error.response
       toast.error(serverError.data.error)
     }
@@ -36,7 +36,7 @@ export const createWorker = async (worker: IWorker) => {
     toast.success("Ishchi muvaffaqiyatli qo'shildi!")
     return newWorker
   } catch (error) {
-    if (axios.isAxiosError(error)) {
+    if (axios.isAxiosError(error) && error.response) {
       const serverError = error.response
       toast.error(serverError.data.error)
     }
@@ -50,7 +50,7 @@ export const deleteWorker = async (id: string) => {
     toast.success("Ishchi muvaffaqiyatli o'chirildi!")
     return newWorker
   } catch (error) {
-    if (axios.isAxiosError(error)) {
+    if (axios.isAxiosError(error) && error.response) {
       const serverError = error.response
       toast.error(serverError.data.error)
     }
@@ -67,7 +67,7 @@ export const updateWorker = async (worker: IWorker) => {
     toast.success("Ishchi muvaffaqiyatli o'zgartirildi!")
     return updatedWorker
   } catch (error) {
-    if (axios.isAxiosError(error)) {
+    if (axios.isAxiosError(error) && error.response) {
       const serverError = error.response
       toast.error(serverError.data.error)
     }

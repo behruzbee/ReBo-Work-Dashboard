@@ -9,7 +9,7 @@ export const getPenalties = async () => {
     const workers = await apiInstance.get<IPenalty[]>('/penalties')
     return workers.data
   } catch (error) {
-    if (axios.isAxiosError(error)) {
+    if (axios.isAxiosError(error) && error.response) {
       const serverError = error.response
       toast.error(serverError.data.error)
     }
@@ -23,7 +23,7 @@ export const createPenalty = async (penalty: ICreatePenalty) => {
     toast.success("Jarima muvaffaqiyatli qo'shildi!")
     return newWorker
   } catch (error) {
-    if (axios.isAxiosError(error)) {
+    if (axios.isAxiosError(error) && error.response) {
       const serverError = error.response
       toast.error(serverError.data.error)
     }
@@ -37,7 +37,7 @@ export const deletePenalty = async (id: string) => {
     toast.success("Jarima muvaffaqiyatli o'chirildi!")
     return newWorker
   } catch (error) {
-    if (axios.isAxiosError(error)) {
+    if (axios.isAxiosError(error) && error.response) {
       const serverError = error.response
       toast.error(serverError.data.error)
     }
