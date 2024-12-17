@@ -5,12 +5,14 @@ import { customAlphabet } from 'nanoid';
 
 import { QrCodeGeneratorWithDownload } from "~features/qr-code-generator"
 import { SalaryInput } from "~features/salary-input";
+import PermissionControl from "~features/permission/ui";
 import { IWorker, useCreateWorkerQuery, workerSchema } from "~entities/worker";
 import { RForm } from "~shared/ui/form"
 import { RIcon } from "~shared/ui/icon"
 import { RButton } from "~shared/ui/button"
 import { RInput } from "~shared/ui/input";
 import { RouterPaths } from "~shared/constants/router-path";
+import { basePermissions } from "~shared/constants/base-permissions";
 
 import s from './styles.module.scss'
 
@@ -50,7 +52,7 @@ const WorkerCreatePage = () => {
     }
 
     return (
-        <>
+        <PermissionControl level={basePermissions.worker.create}>
             <RButton type='button' color='white' className={s.backButton} onClick={() => navigate(-1)}>
                 <RIcon name='arrow-back' /> Qaytish
             </RButton>
@@ -70,7 +72,7 @@ const WorkerCreatePage = () => {
                     buttonText="Qo'shish"
                 />
             </div>
-        </>
+        </PermissionControl>
     )
 }
 

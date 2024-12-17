@@ -1,8 +1,10 @@
 import { createColumnHelper } from "@tanstack/react-table"
 
 import { type IPenalty } from "~entities/penalty"
+import PermissionControl from "~features/permission/ui"
 import { useDeletePenaltyQuery } from "~entities/penalty/api"
 import { useGetWorkersQuery } from "~entities/worker"
+import { basePermissions } from "~shared/constants/base-permissions"
 import { parseNumberWithSpaces } from "~shared/libs/number-parser"
 import { RButton } from "~shared/ui/button"
 
@@ -43,7 +45,11 @@ export const useColumns = () => {
             header: 'Harakatlar',
             cell: (info) => {
                 const id = info.cell.row.original.id
-                return <RButton onClick={() => deletePenalty(id)} size='sm' color='red'>O'chirish</RButton>
+                return (
+                    <PermissionControl level={basePermissions.penalty.delete}>
+                        <RButton onClick={() => deletePenalty(id)} size='sm' color='red'>O'chirish</RButton>
+                    </PermissionControl>
+                )
             }
         }),
     ]

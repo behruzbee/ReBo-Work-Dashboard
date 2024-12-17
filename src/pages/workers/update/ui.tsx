@@ -4,6 +4,7 @@ import { toast } from "react-toastify";
 
 import { type IWorker, useUpdateWorkerQuery, useGetWorkerQuery, workerSchema } from "~entities/worker";
 import { SalaryInput } from "~features/salary-input";
+import PermissionControl from "~features/permission/ui";
 import { QrCodeGeneratorWithDownload } from "~features/qr-code-generator";
 import { RouterPaths } from "~shared/constants/router-path";
 import { RButton } from "~shared/ui/button";
@@ -11,6 +12,7 @@ import { RIcon } from "~shared/ui/icon";
 import { RForm } from "~shared/ui/form";
 import { RInput } from "~shared/ui/input";
 import { Spinner } from "~shared/ui/spinner";
+import { basePermissions } from "~shared/constants/base-permissions";
 
 import s from './styles.module.scss'
 
@@ -52,7 +54,7 @@ const UpdateWorkerPage = () => {
     }
 
     return (
-        <>
+        <PermissionControl level={basePermissions.worker.update}>
             <RButton type='button' color='white' className={s.backButton} onClick={() => navigate(-1)}>
                 <RIcon name='arrow-back' /> Qaytish
             </RButton>
@@ -72,7 +74,7 @@ const UpdateWorkerPage = () => {
                     buttonText="O'zgartirish"
                 />
             </div>
-        </>
+        </PermissionControl>
     )
 }
 

@@ -21,11 +21,18 @@ export const AuthPaths = {
   login: "/login",
 }
 
+export const AccountsPaths = {
+  root: '/accounts',
+  create: '/accounts/create',
+  update: '/accounts/update/:username',
+}
+
 export const RouterPaths = {
   root: '/',
   workers: WorkersPaths,
   penalties: PenaltiesPaths,
   bonuses: BonusesPaths,
   histories: HistoriesPaths,
-  auth: AuthPaths
+  auth: AuthPaths,
+  accounts: AccountsPaths
 }

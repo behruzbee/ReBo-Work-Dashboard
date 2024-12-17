@@ -29,6 +29,7 @@ const LoginForm = () => {
         <RInput
           key='password'
           required
+          type='password'
           label='Parolingizni kiriting!'
           name='password'
           placeholder='kiritish shart!'

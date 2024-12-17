@@ -1,12 +1,13 @@
 import { createBrowserRouter, Navigate } from "react-router-dom";
 
 import { LayoutPage, PrivatePage } from "~pages/layouts";
+import { LoginPage } from "~pages/login";
 import { HistoriesPage, HistoryCreatePage } from "~pages/histories";
 import { PenaltiesPage, PenaltyCreatePage } from "~pages/penalties";
 import { UpdateWorkerPage, WorkerCreatePage, WorkerPage, WorkersPage } from "~pages/workers";
 import { BonusCreatePage, BonusesPage } from "~pages/bonuses";
+import { AccountCreatePage, AccountsPage, AccountUpdatePage } from "~pages/accounts";
 import { RouterPaths } from "~shared/constants/router-path";
-import { LoginPage } from "~pages/login";
 
 export const router = createBrowserRouter([
     {
@@ -25,6 +26,9 @@ export const router = createBrowserRouter([
                     { path: RouterPaths.penalties.create, element: <PenaltyCreatePage /> },
                     { path: RouterPaths.bonuses.root, element: <BonusesPage /> },
                     { path: RouterPaths.bonuses.create, element: <BonusCreatePage /> },
+                    { path: RouterPaths.accounts.root, element: <AccountsPage /> },
+                    { path: RouterPaths.accounts.create, element: <AccountCreatePage /> },
+                    { path: RouterPaths.accounts.update, element: <AccountUpdatePage /> },
                 ]
             }
         ]
@@ -39,6 +43,6 @@ export const router = createBrowserRouter([
     },
     {
         path: "*",
-        element: <Navigate to={RouterPaths.auth.login} />
+        element: <Navigate to={RouterPaths.root} />
     }
 ])

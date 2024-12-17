@@ -6,6 +6,8 @@ import { RIcon } from "~shared/ui/icon"
 
 import s from './styles.module.scss'
 import { CardInfo } from "./components/card"
+import PermissionControl from "~features/permission/ui"
+import { basePermissions } from "~shared/constants/base-permissions"
 
 const WorkerPage = () => {
   const { id } = useParams()
@@ -17,7 +19,7 @@ const WorkerPage = () => {
   }
 
   return (
-    <>
+    <PermissionControl level={basePermissions.worker.readWorker}>
       <RButton type='button' color='white' className={s.backButton} onClick={() => navigate(-1)}>
         <RIcon name='arrow-back' /> Qaytish
       </RButton>
@@ -58,7 +60,7 @@ const WorkerPage = () => {
           />
         </div>
       </div>
-    </>
+    </PermissionControl>
   )
 }
 

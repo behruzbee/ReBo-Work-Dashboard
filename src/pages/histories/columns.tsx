@@ -1,9 +1,11 @@
 import { createColumnHelper } from "@tanstack/react-table"
 
+import PermissionControl from "~features/permission/ui"
 import { type IHistory } from "~entities/history"
 import { useDeleteHistoryQuery } from "~entities/history/api/queries"
 import { useGetWorkersQuery } from "~entities/worker"
 import { RButton } from "~shared/ui/button"
+import { basePermissions } from "~shared/constants/base-permissions"
 
 import s from './styles.module.scss'
 
@@ -47,7 +49,11 @@ export const useColumns = () => {
             header: 'Harakatlar',
             cell: (info) => {
                 const id = info.cell.row.original.id
-                return <RButton onClick={() => deleteHistory(id)} size='sm' color='red'>O'chirish</RButton>
+                return (
+                    <PermissionControl level={basePermissions.history.delete}>
+                        <RButton onClick={() => deleteHistory(id)} size='sm' color='red'>O'chirish</RButton>
+                    </PermissionControl>
+                )
             }
         }),
     ]

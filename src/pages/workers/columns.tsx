@@ -1,9 +1,11 @@
 import { Link, useNavigate } from "react-router-dom"
 import { createColumnHelper } from "@tanstack/react-table"
 
+import PermissionControl from "~features/permission/ui"
 import { IWorker, useDeleteWorkerQuery } from "~entities/worker"
 import { parseNumberWithSpaces } from "~shared/libs/number-parser"
 import { RButton } from "~shared/ui/button"
+import { basePermissions } from "~shared/constants/base-permissions"
 
 import s from './styles.module.scss'
 
@@ -53,8 +55,12 @@ export const useColumns = () => {
                 const id = info.cell.row.original.id
                 return (
                     <div className={s.buttonsWrapper}>
-                        <RButton onClick={() => navigate('/workers/update/' + id)} size='sm' color='green'>O'zgartirish</RButton>
-                        <RButton onClick={() => deleteWorker(id)} size='sm' color='red'>O'chirish</RButton>
+                        <PermissionControl level={basePermissions.worker.update}>
+                            <RButton onClick={() => navigate('/workers/update/' + id)} size='sm' color='green'>O'zgartirish</RButton>
+                        </PermissionControl>
+                        <PermissionControl level={basePermissions.worker.delete}>
+                            <RButton onClick={() => deleteWorker(id)} size='sm' color='red'>O'chirish</RButton>
+                        </PermissionControl>
                     </div>
                 )
             }

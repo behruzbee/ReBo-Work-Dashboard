@@ -2,6 +2,7 @@ import { useState } from "react"
 import { useNavigate } from "react-router-dom"
 import { toast } from "react-toastify";
 
+import PermissionControl from "~features/permission/ui";
 import { historySchema, ICreateHistory, useCreateHistoryQuery } from "~entities/history";
 import { useGetWorkersQuery } from "~entities/worker";
 import { RForm } from "~shared/ui/form"
@@ -13,6 +14,7 @@ import { RSelect } from "~shared/ui/select";
 import { RouterPaths } from "~shared/constants/router-path";
 
 import s from './styles.module.scss'
+import { basePermissions } from "~shared/constants/base-permissions";
 
 const HistoryCreatePage = () => {
     const navigate = useNavigate()
@@ -59,7 +61,7 @@ const HistoryCreatePage = () => {
     ]
 
     return (
-        <>
+        <PermissionControl level={basePermissions.history.create}>
             <RButton type='button' color='white' className={s.backButton} onClick={() => navigate(-1)}>
                 <RIcon name='arrow-back' /> Qaytish
             </RButton>
@@ -107,7 +109,7 @@ const HistoryCreatePage = () => {
                     ]}
                 />
             </div>
-        </>
+        </PermissionControl>
     )
 }
 

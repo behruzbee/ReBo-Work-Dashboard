@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom"
 import { toast } from "react-toastify";
 
 import { SalaryInput } from "~features/salary-input";
+import PermissionControl from "~features/permission/ui";
 import { bonusSchema, useCreateBonusQuery, type ICreateBonus } from "~entities/bonus";
 import { useGetWorkersQuery } from "~entities/worker";
 import { RForm } from "~shared/ui/form"
@@ -12,6 +13,7 @@ import { RInput } from "~shared/ui/input";
 import { Spinner } from "~shared/ui/spinner";
 import { RSelect } from "~shared/ui/select";
 import { RouterPaths } from "~shared/constants/router-path";
+import { basePermissions } from "~shared/constants/base-permissions";
 
 import s from './styles.module.scss'
 
@@ -51,7 +53,7 @@ const BonusCreatePage = () => {
     const workersOptions = workers.map(worker => ({ label: `${worker.name} ${worker.lastName}`, value: worker.id }))
 
     return (
-        <>
+        <PermissionControl level={basePermissions.bonus.create}>
             <RButton type='button' color='white' className={s.backButton} onClick={() => navigate(-1)}>
                 <RIcon name='arrow-back' /> Qaytish
             </RButton>
@@ -85,7 +87,7 @@ const BonusCreatePage = () => {
                     buttonText="Qo'shish"
                 />
             </div>
-        </>
+        </PermissionControl>
     )
 }
 

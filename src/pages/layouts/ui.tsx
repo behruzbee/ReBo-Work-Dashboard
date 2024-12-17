@@ -1,15 +1,18 @@
 import { Link, NavLink, Outlet } from 'react-router-dom';
 
+import PermissionControl from '~features/permission/ui';
 import { RIcon } from '~shared/ui/icon';
 import { RouterPaths } from '~shared/constants/router-path';
+import { basePermissions } from '~shared/constants/base-permissions';
 
 import s from './styles.module.scss';
 
 const LINKS = [
-  { path: RouterPaths.workers.root, icon: 'male', text: "Ishchilar" },
-  { path: RouterPaths.histories.root, icon: 'history', text: "Tarix" },
-  { path: RouterPaths.penalties.root, icon: 'money-withdraw ', text: "Jarimalar" },
-  { path: RouterPaths.bonuses.root, icon: 'money', text: "Bonuslar" },
+  { path: RouterPaths.workers.root, icon: 'male', text: "Ishchilar", permissionLevel: basePermissions.worker.readWorkers },
+  { path: RouterPaths.histories.root, icon: 'history', text: "Tarix", permissionLevel: basePermissions.history.readHistories },
+  { path: RouterPaths.penalties.root, icon: 'money-withdraw ', text: "Jarimalar", permissionLevel: basePermissions.penalty.read },
+  { path: RouterPaths.bonuses.root, icon: 'money', text: "Bonuslar", permissionLevel: basePermissions.bonus.read },
+  { path: RouterPaths.accounts.root, icon: 'user', text: "Akkauntlar", permissionLevel: basePermissions.users.read },
 ]
 
 const LayoutPage = () => {
@@ -24,13 +27,17 @@ const LayoutPage = () => {
 
           <ul className={s.links}>
             {LINKS.map((link) => (
-              <li key={link.text}>
-                <NavLink to={link.path} className={({ isActive }) => isActive ? `${s.link} ${s.active}` : `${s.link}`} end={false}>
-                  <RIcon name={link.icon} />
-                  {link.text}
-                </NavLink>
-              </li>
+              <PermissionControl key={link.text} level={link.permissionLevel}>
+                <li >
+                  <NavLink to={link.path} className={({ isActive }) => isActive ? `${s.link} ${s.active}` : `${s.link}`} end={false}>
+                    <RIcon name={link.icon} />
+                    {link.text}
+                  </NavLink>
+                </li>
+              </PermissionControl>
             ))}
+            <li>
+            </li>
           </ul>
         </div>
 

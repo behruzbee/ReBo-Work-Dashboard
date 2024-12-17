@@ -1,19 +1,24 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 import { SearchableTable } from "~widgets/searchable-table"
+import PermissionControl from "~features/permission/ui";
 import { SalaryInput } from "~features/salary-input";
 import { useGetWorkersQuery } from "~entities/worker";
 import { useGetBonusesQuery } from "~entities/bonus";
 import { Spinner } from "~shared/ui/spinner"
 import { RSelect } from "~shared/ui/select";
 import { RInput } from "~shared/ui/input";
+import { RButton } from "~shared/ui/button";
 import { RouterPaths } from "~shared/constants/router-path";
+import { basePermissions } from "~shared/constants/base-permissions";
 import { parseNumberWithSpaces } from "~shared/libs/number-parser";
 
 import { useColumns } from "./columns";
 import s from './styles.module.scss';
 
 const BonusesPage = () => {
+  const navigate = useNavigate()
   const columns = useColumns()
   const { data: workers } = useGetWorkersQuery()
   const { data: bonuses, isLoading } = useGetBonusesQuery()
@@ -35,38 +40,48 @@ const BonusesPage = () => {
   const workersSelectOptions = workers.map(worker => ({ label: `${worker.name} ${worker.lastName}`, value: worker.id }))
 
   return (
-    <SearchableTable
-      createPath={RouterPaths.bonuses.create}
-      title="Bonuslar"
-      data={bonuses}
-      filters={filters}
-      columns={columns}
-      inputs={[
-        <RSelect
-          key='worker_id'
-          value={filters.worker_id}
-          onChange={(e: React.ChangeEvent<HTMLSelectElement>) => setFilters((prev) => ({ ...prev, worker_id: e.target.value }))}
-          label="Ishchi orqali qidirish"
-          options={workersSelectOptions}
-          defaultOptionText="Hammasi"
-        />,
-        <RInput
-          key='description'
-          value={filters.description}
-          placeholder="Sabab orqali qidirish!"
-          onChange={(e: React.ChangeEvent<HTMLInputElement>) => setFilters((prev) => ({ ...prev, description: e.target.value }))}
-          label="Sabab orqali qidirish"
-        />,
-        <SalaryInput
-          key='amount'
-          placeholder="200 000 so'm"
-          value={filters.amount}
-          onChange={value => setFilters((prev) => ({ ...prev, amount: parseNumberWithSpaces(value)}))}
-          label="Miqdor orqali qidirish"
-        />
-      ]}
-      sorting={[{ id: 'time', desc: true }]}
-    />
+    <PermissionControl level={basePermissions.bonus.read}>
+      <div className={s.header}>
+        <h2 className={s.title}>
+          Bonuslar
+        </h2>
+        <PermissionControl level={basePermissions.bonus.create}>
+          <div className={s.headerButtons}>
+            <RButton type='button' onClick={() => navigate(RouterPaths.bonuses.create)} color='blue'>Qo'shish</RButton>
+          </div>
+        </PermissionControl>
+      </div>
+      <SearchableTable
+        data={bonuses}
+        filters={filters}
+        columns={columns}
+        inputs={[
+          <RSelect
+            key='worker_id'
+            value={filters.worker_id}
+            onChange={(e: React.ChangeEvent<HTMLSelectElement>) => setFilters((prev) => ({ ...prev, worker_id: e.target.value }))}
+            label="Ishchi orqali qidirish"
+            options={workersSelectOptions}
+            defaultOptionText="Hammasi"
+          />,
+          <RInput
+            key='description'
+            value={filters.description}
+            placeholder="Sabab orqali qidirish!"
+            onChange={(e: React.ChangeEvent<HTMLInputElement>) => setFilters((prev) => ({ ...prev, description: e.target.value }))}
+            label="Sabab orqali qidirish"
+          />,
+          <SalaryInput
+            key='amount'
+            placeholder="200 000 so'm"
+            value={filters.amount}
+            onChange={value => setFilters((prev) => ({ ...prev, amount: parseNumberWithSpaces(value) }))}
+            label="Miqdor orqali qidirish"
+          />
+        ]}
+        sorting={[{ id: 'time', desc: true }]}
+      />
+    </PermissionControl>
   )
 }
 
