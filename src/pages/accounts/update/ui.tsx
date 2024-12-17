@@ -3,7 +3,7 @@ import { useNavigate, useParams } from "react-router-dom";
 import { toast } from "react-toastify";
 
 import PermissionControl from "~features/permission/ui";
-import { type ICreateUser, type IUser, useGetUserQuery, useUpdateUserQuery, userSchema } from "~entities/user";
+import { type ICreateUser, useGetUserQuery, useUpdateUserQuery, userSchema } from "~entities/user";
 import { RouterPaths } from "~shared/constants/router-path";
 import { RButton } from "~shared/ui/button";
 import { RIcon } from "~shared/ui/icon";
