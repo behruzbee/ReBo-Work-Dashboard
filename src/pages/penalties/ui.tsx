@@ -2,7 +2,6 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 import { SearchableTable } from "~widgets/searchable-table"
-import { SalaryInput } from "~features/salary-input";
 import PermissionControl from "~features/permission/ui";
 import { useGetWorkersQuery } from "~entities/worker";
 import { useGetPenaltiesQuery } from "~entities/penalty";
@@ -10,7 +9,6 @@ import { Spinner } from "~shared/ui/spinner"
 import { RSelect } from "~shared/ui/select";
 import { RInput } from "~shared/ui/input";
 import { RouterPaths } from "~shared/constants/router-path";
-import { parseNumberWithSpaces } from "~shared/libs/number-parser";
 import { RButton } from "~shared/ui/button";
 import { basePermissions } from "~shared/constants/base-permissions";
 
@@ -26,7 +24,6 @@ const PenaltiesPage = () => {
   const [filters, setFilters] = useState({
     worker_id: '',
     description: '',
-    amount: ''
   })
 
   if (isLoading || !penalties || !workers) {
@@ -70,13 +67,6 @@ const PenaltiesPage = () => {
             placeholder="Sabab orqali qidirish!"
             onChange={(e: React.ChangeEvent<HTMLInputElement>) => setFilters((prev) => ({ ...prev, description: e.target.value }))}
             label="Sabab orqali qidirish"
-          />,
-          <SalaryInput
-            key='amount'
-            placeholder="200 000 so'm"
-            value={filters.amount}
-            onChange={value => setFilters((prev) => ({ ...prev, amount: parseNumberWithSpaces(value) }))}
-            label="Miqdor orqali qidirish"
           />
         ]}
         sorting={[{ id: 'time', desc: true }]}
