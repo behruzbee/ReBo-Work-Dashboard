@@ -16,6 +16,10 @@
     color: var(--color-black);
     font-family: 'Poppins-Medium';
     font-size: 28px;
+
+    @media (max-width: 600px) {
+      font-size: 23px;
+    }
   }
 
   .headerButtons {

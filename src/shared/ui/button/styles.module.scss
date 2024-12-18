@@ -13,17 +13,17 @@
   }
 
   &.red {
-    color: var(--color-white);
+    color: #fff;
     background-color: var(--color-red);
   }
 
   &.blue {
-    color: var(--color-white);
+    color: #fff;
     background-color: var(--color-blue);
   }
 
   &.green {
-    color: var(--color-white);
+    color: #fff;
     background-color: var(--color-green);
   }
 
@@ -31,18 +31,33 @@
     font-family: 'Poppins-Regular';
     font-size: 12px;
     padding: 10px 14px;
+
+    @media (max-width: 600px) {
+      font-size: 8px;
+      padding: 6px 10px;
+    }
   }
 
   &.md {
     font-family: 'Poppins-Medium';
     font-size: 16px;
     padding: 14px 18px;
+
+    @media (max-width: 600px) {
+      font-size: 12px;
+      padding: 10px 14px;
+    }
   }
 
   &.lg {
     font-family: 'Poppins-SemiBold';
     font-size: 20px;
     padding: 18px 22px;
+
+    @media (max-width: 600px) {
+      font-size: 16px;
+      padding: 14px 18px;
+    }
   }
 
   .white {

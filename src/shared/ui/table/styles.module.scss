@@ -1,3 +1,9 @@
+.wrapper {
+  width: 100%;
+  overflow: auto;
+  padding-bottom: 10px;
+}
+
 .table {
   width: 100%;
   border-collapse: collapse;
@@ -16,6 +22,10 @@
       padding: 24px;
       font-size: 16px;
       color: var(--color-black);
+      @media (max-width: 600px) {
+        padding: 10px;
+        font-size: 11px;
+      }
     }
   }
 
@@ -23,6 +33,11 @@
     td {
       padding: 14px 18px;
       border-bottom: 1px solid #ddd;
+      min-width: 100px;
+
+      @media (max-width: 600px) {
+        padding: 9px 13px;
+      }
     }
   }
 
@@ -30,10 +45,16 @@
   td {
     font-family: 'Poppins-Regular';
     font-size: 16px;
+    line-height: 20px;
     border-right: 1px solid #ddd;
     color: var(--color-black);
     &:last-child {
       border-right: none;
+    }
+
+    @media (max-width: 600px) {
+      font-size: 11px;
+      line-height: 15px;
     }
   }
 }

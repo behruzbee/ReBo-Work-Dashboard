@@ -41,8 +41,8 @@ export const useColumns = () => {
             cell: info => {
                 const status_type = info.getValue()
                 return status_type === 'enter'
-                    ? <span className={s.statusWorking} data-status='enter'>Ishga keldi</span>
-                    : <span className={s.statusWorking} data-status='exit'>Ishdan chiqdi</span>
+                    ? <p className={s.statusWorking} data-status='enter'>Ishga keldi</p>
+                    : <p className={s.statusWorking} data-status='exit'>Ishdan chiqdi</p>
             }
         }),
         columnHelper.display({

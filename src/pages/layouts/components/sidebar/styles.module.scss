@@ -1,0 +1,130 @@
+.sidebar {
+  min-width: 230px;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  background-color: var(--color-white);
+  padding-top: 55px;
+  padding-bottom: 25px;
+
+  .logoWrapper {
+    display: flex;
+    flex-direction: column;
+    padding-left: 23px;
+    padding-bottom: 40px;
+
+    .logo {
+      font-size: 28px;
+      font-family: 'Poppins-SemiBold';
+      color: var(--color-blue);
+    }
+
+    span {
+      font-size: 14px;
+      font-family: 'Poppins-Regular';
+      color: var(--color-blue);
+    }
+  }
+
+  .links {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .link {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    width: 227px;
+    padding-left: 38px;
+    padding-top: 15px;
+    padding-bottom: 15px;
+    font-family: 'Poppins-Regular';
+    font-size: 16px;
+    color: var(--color-gray);
+    transition: color 100ms ease-in-out;
+
+    &.active {
+      color: var(--color-blue);
+    }
+
+    i {
+      font-size: 23px;
+      padding-right: 5px;
+    }
+
+    &::before {
+      content: '';
+      display: block;
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 3px;
+      height: 0;
+      background-color: var(--color-blue);
+      transition: height 100ms ease-in-out;
+    }
+    &.active::before {
+      height: 100%;
+    }
+
+    &:hover {
+      color: var(--color-blue);
+    }
+    &:hover::before {
+      height: 100%;
+    }
+  }
+
+  .bottomWrapper {
+    display: flex;
+    row-gap: 20px;
+    flex-direction: column;
+
+    button {
+      display: inline-flex;
+      margin-left: 33px;
+    }
+  }
+
+  .arrowButton{
+    display: none;
+  }
+
+  @media (max-width: 1265px) {
+    top: 0px;
+    left: 0px;
+    position: absolute;
+    transition: left 150ms ease-out;
+    order: 999;
+
+    &.opened {
+      left: 0px;
+    }
+
+    &.closed {
+      left: -220px;
+    }
+
+    .arrowButton {
+      position: absolute;
+      display: inline-flex;
+      width: 70px;
+      height: 80px;
+      align-items: center;
+      justify-content: center;
+      right: -40px;
+      top: 50%;
+      outline: 0;
+      border: 0;
+      border-radius: 50%;
+      color: var(--color-blue);
+      background-color: var(--color-white);
+
+      i {
+        font-size: 60px;
+      }
+    }
+  }
+}

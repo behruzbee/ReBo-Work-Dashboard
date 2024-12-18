@@ -3,10 +3,9 @@
 @import url('./_fonts.scss');
 
 .status_working {
-  border-radius: 8px;
   text-align: center;
   span {
-    color: var(--color-white);
+    color: #fff;
   }
   &:has(span[data-status='working']) {
     background-color: var(--color-green);
