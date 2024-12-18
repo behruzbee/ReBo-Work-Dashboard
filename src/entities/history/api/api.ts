@@ -44,3 +44,16 @@ export const deleteHistory = async (id: string) => {
     console.error(error)
   }
 }
+
+export const getWorkerHistories = async (workerId: string) => {
+  try {
+    const result = await apiInstance.get<IHistory[]>('/histories/worker/' + workerId)
+    return result.data
+  } catch (error) {
+    if (axios.isAxiosError(error) && error.response) {
+      const serverError = error.response
+      toast.error(serverError.data.error)
+    }
+    console.error(error)
+  }
+}

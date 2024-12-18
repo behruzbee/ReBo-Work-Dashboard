@@ -10,3 +10,23 @@
   // background content color
   --bg-content: #f8f8f8;
 }
+
+[data-theme="dark"] {
+  /* Тёмная тема */
+  --color-blue: #4c84ff;
+  --color-gray: #727272;
+  --color-white: #1a1a1a;
+  --color-black: #f0f0f0;
+  --color-red: #ff6678;
+  --color-green: #57d87d;
+
+  --bg-content: #121212;
+  --text-color: var(--color-white);
+}
+
+body {
+  background-color: var(--bg-content);
+  color: var(--text-color);
+  font-family: 'Poppins', sans-serif;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}

@@ -44,3 +44,16 @@ export const deleteBonus = async (id: string) => {
     console.error(error)
   }
 }
+
+export const getWorkerBonuses = async (workerId: string) => {
+  try {
+    const result = await apiInstance.get<IBonus[]>('/bonuses/worker/' + workerId)
+    return result.data
+  } catch (error) {
+    if (axios.isAxiosError(error) && error.response) {
+      const serverError = error.response
+      toast.error(serverError.data.error)
+    }
+    console.error(error)
+  }
+}

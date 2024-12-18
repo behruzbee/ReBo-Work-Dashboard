@@ -2,7 +2,7 @@ import { useMutation, useQuery } from '@tanstack/react-query'
 import { queryClient } from '~shared/libs/query-clients'
 
 import { type ICreatePenalty } from '../types/penalty'
-import { getPenalties, createPenalty, deletePenalty } from './api'
+import { getPenalties, createPenalty, deletePenalty, getWorkerPenalty } from './api'
 
 export const useGetPenaltiesQuery = () => {
   const query = useQuery({
@@ -40,4 +40,14 @@ export const useDeletePenaltyQuery = () => {
   })
 
   return mutation
+}
+
+export const useGetWorkerPenaltyQuery = (workerId: string) => {
+  const query = useQuery({
+    initialData: [],
+    queryKey: ['worker-penalties'],
+    queryFn: () => getWorkerPenalty(workerId)
+  })
+
+  return query
 }

@@ -1,1 +1,1 @@
-export { useCreateBonusQuery, useDeleteBonusQuery, useGetBonusesQuery } from './queries'
+export { useCreateBonusQuery, useDeleteBonusQuery, useGetBonusesQuery, useGetWorkerBonusesQuery } from './queries'

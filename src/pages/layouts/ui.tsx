@@ -1,6 +1,7 @@
 import { Link, NavLink, Outlet } from 'react-router-dom';
 
 import PermissionControl from '~features/permission/ui';
+import { ThemeButton } from '~features/theme-button';
 import { RIcon } from '~shared/ui/icon';
 import { RouterPaths } from '~shared/constants/router-path';
 import { basePermissions } from '~shared/constants/base-permissions';
@@ -41,10 +42,13 @@ const LayoutPage = () => {
           </ul>
         </div>
 
-        <NavLink className={s.link} to={RouterPaths.auth.login}>
-          <RIcon name='exit' />
-          Chiqish
-        </NavLink>
+        <div className={s.bottomWrapper}>
+          <ThemeButton />
+          <NavLink className={s.link} to={RouterPaths.auth.login}>
+            <RIcon name='exit' />
+            Chiqish
+          </NavLink>
+        </div>
       </aside>
       <div className={s.content}>
         <Outlet />

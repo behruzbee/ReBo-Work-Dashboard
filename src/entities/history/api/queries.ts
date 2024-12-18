@@ -2,7 +2,7 @@ import { useMutation, useQuery } from '@tanstack/react-query'
 import { queryClient } from '~shared/libs/query-clients'
 
 import { ICreateHistory } from '../types/history'
-import { getHistories, createHistory, deleteHistory } from './api'
+import { getHistories, createHistory, deleteHistory, getWorkerHistories } from './api'
 
 export const useGetHistoriesQuery = () => {
   const query = useQuery({
@@ -40,4 +40,14 @@ export const useDeleteHistoryQuery = () => {
   })
 
   return mutation
+}
+
+export const useGetWorkerHistoriesQuery = (workerId: string) => {
+  const query = useQuery({
+    initialData: [],
+    queryKey: ['worker-histories'],
+    queryFn: () => getWorkerHistories(workerId)
+  })
+
+  return query
 }

@@ -6,8 +6,8 @@ import { type ICreatePenalty, type IPenalty } from '../types/penalty'
 
 export const getPenalties = async () => {
   try {
-    const workers = await apiInstance.get<IPenalty[]>('/penalties')
-    return workers.data
+    const penalties = await apiInstance.get<IPenalty[]>('/penalties')
+    return penalties.data
   } catch (error) {
     if (axios.isAxiosError(error) && error.response) {
       const serverError = error.response
@@ -19,9 +19,9 @@ export const getPenalties = async () => {
 
 export const createPenalty = async (penalty: ICreatePenalty) => {
   try {
-    const newWorker = await apiInstance.post<IPenalty>('/penalty', penalty)
+    const newPenalty = await apiInstance.post<IPenalty>('/penalty', penalty)
     toast.success("Jarima muvaffaqiyatli qo'shildi!")
-    return newWorker
+    return newPenalty
   } catch (error) {
     if (axios.isAxiosError(error) && error.response) {
       const serverError = error.response
@@ -33,9 +33,22 @@ export const createPenalty = async (penalty: ICreatePenalty) => {
 
 export const deletePenalty = async (id: string) => {
   try {
-    const newWorker = await apiInstance.delete<IPenalty>('/penalty/' + id)
+    const deletedPenalty = await apiInstance.delete<IPenalty>('/penalty/' + id)
     toast.success("Jarima muvaffaqiyatli o'chirildi!")
-    return newWorker
+    return deletedPenalty
+  } catch (error) {
+    if (axios.isAxiosError(error) && error.response) {
+      const serverError = error.response
+      toast.error(serverError.data.error)
+    }
+    console.error(error)
+  }
+}
+
+export const getWorkerPenalty = async (workerId: string) => {
+  try {
+    const penalties = await apiInstance.get<IPenalty[]>('/penalties/worker/' + workerId)
+    return penalties.data
   } catch (error) {
     if (axios.isAxiosError(error) && error.response) {
       const serverError = error.response

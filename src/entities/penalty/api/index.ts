@@ -1,1 +1,6 @@
-export { useGetPenaltiesQuery, useCreatePenaltyQuery, useDeletePenaltyQuery } from './queries'
+export {
+  useGetPenaltiesQuery,
+  useCreatePenaltyQuery,
+  useDeletePenaltyQuery,
+  useGetWorkerPenaltyQuery
+} from './queries'

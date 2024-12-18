@@ -1,1 +1,6 @@
-export { useCreateHistoryQuery, useGetHistoriesQuery } from './queries'
+export {
+  useCreateHistoryQuery,
+  useGetHistoriesQuery,
+  useDeleteHistoryQuery,
+  useGetWorkerHistoriesQuery
+} from './queries'
