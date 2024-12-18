@@ -1,6 +1,6 @@
 import { useMutation, useQuery } from '@tanstack/react-query'
 
-import { IWorker } from '../types/worker'
+import { ICreateWorker } from '../types/worker'
 import {
   createWorker,
   deleteWorker,
@@ -32,7 +32,7 @@ export const useGetWorkerQuery = (id: string) => {
 export const useCreateWorkerQuery = () => {
   const mutation = useMutation({
     mutationKey: ['workers'],
-    mutationFn: (data: IWorker) => createWorker(data),
+    mutationFn: (data: ICreateWorker) => createWorker(data),
     onSuccess: () => {
       queryClient.invalidateQueries({
         queryKey: ['workers']
@@ -60,7 +60,7 @@ export const useDeleteWorkerQuery = () => {
 export const useUpdateWorkerQuery = () => {
   const mutation = useMutation({
     mutationKey: ['workers'],
-    mutationFn: (worker: IWorker) => updateWorker(worker),
+    mutationFn: (worker: ICreateWorker) => updateWorker(worker),
     onSuccess: () => {
       queryClient.invalidateQueries({
         queryKey: ['workers']

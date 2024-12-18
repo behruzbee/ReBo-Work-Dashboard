@@ -1,7 +1,7 @@
 import axios from 'axios'
 import { apiInstance } from '~shared/api'
 
-import { IWorker } from '../types/worker'
+import { ICreateWorker, IWorker } from '../types/worker'
 import { toast } from 'react-toastify'
 
 export const getWorkers = async () => {
@@ -30,7 +30,7 @@ export const getWorker = async (id: string) => {
   }
 }
 
-export const createWorker = async (worker: IWorker) => {
+export const createWorker = async (worker: ICreateWorker) => {
   try {
     const newWorker = await apiInstance.post<IWorker>('/worker', worker)
     toast.success("Ishchi muvaffaqiyatli qo'shildi!")
@@ -58,7 +58,7 @@ export const deleteWorker = async (id: string) => {
   }
 }
 
-export const updateWorker = async (worker: IWorker) => {
+export const updateWorker = async (worker: ICreateWorker) => {
   try {
     const updatedWorker = await apiInstance.patch(
       '/worker/' + worker.id,

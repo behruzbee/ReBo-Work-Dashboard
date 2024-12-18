@@ -25,5 +25,4 @@ export const workerSchema = z.object({
   qr_code_text: z.string({
     required_error: "QR kod matni bo'sh bo'lmasligi kerak!"
   })
-  // penalties: z.array(penaltySchema), // penaltySchema — это схема для IPenalty
 })

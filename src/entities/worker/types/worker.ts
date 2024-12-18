@@ -11,3 +11,5 @@ export interface IWorker {
   qr_code_text: string
   created_at: string
 }
+
+export interface ICreateWorker extends Omit<IWorker, 'created_at'> {}
