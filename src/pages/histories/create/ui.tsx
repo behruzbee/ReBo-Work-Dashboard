@@ -2,7 +2,7 @@ import { useState } from "react"
 import { useNavigate } from "react-router-dom"
 import { toast } from "react-toastify";
 
-import PermissionControl from "~features/permission/ui";
+import { PermissionControl } from "~features/permission";
 import { historySchema, ICreateHistory, useCreateHistoryQuery } from "~entities/history";
 import { useGetWorkersQuery } from "~entities/worker";
 import { RForm } from "~shared/ui/form"
@@ -25,7 +25,7 @@ const HistoryCreatePage = () => {
     const handleSubmit = (data: ICreateHistory) => {
         setErrors({})
         const result = historySchema.safeParse(data)
-        
+
         if (result.success) {
             mutate(result.data)
             navigate(RouterPaths.histories.root)

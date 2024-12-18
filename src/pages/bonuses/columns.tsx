@@ -1,6 +1,6 @@
 import { createColumnHelper } from "@tanstack/react-table"
 
-import PermissionControl from "~features/permission/ui"
+import { PermissionControl } from "~features/permission"
 import { type IBonus } from "~entities/bonus"
 import { useDeleteBonusQuery } from "~entities/bonus/api"
 import { useGetWorkersQuery } from "~entities/worker"
@@ -46,7 +46,7 @@ export const useColumns = () => {
             cell: (info) => {
                 const id = info.cell.row.original.id
                 return (
-                    <PermissionControl level={basePermissions.bonus.delete}>
+                    <PermissionControl level={basePermissions.bonus.delete} noAccessText="нет доступа!">
                         <RButton onClick={() => deleteBonus(id)} size='sm' color='red'>O'chirish</RButton>
                     </PermissionControl>
                 )

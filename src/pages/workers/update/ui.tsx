@@ -4,7 +4,7 @@ import { toast } from "react-toastify";
 
 import { type IWorker, useUpdateWorkerQuery, useGetWorkerQuery, workerSchema } from "~entities/worker";
 import { SalaryInput } from "~features/salary-input";
-import PermissionControl from "~features/permission/ui";
+import { PermissionControl } from "~features/permission";
 import { QrCodeGeneratorWithDownload } from "~features/qr-code-generator";
 import { RouterPaths } from "~shared/constants/router-path";
 import { RButton } from "~shared/ui/button";

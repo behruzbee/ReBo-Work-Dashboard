@@ -1,6 +1,6 @@
 import { useNavigate } from 'react-router-dom'
 
-import PermissionControl from '~features/permission/ui'
+import { PermissionControl } from '~features/permission'
 import { useGetUsersQuery } from '~entities/user'
 import { Spinner } from '~shared/ui/spinner'
 import { RButton } from '~shared/ui/button'

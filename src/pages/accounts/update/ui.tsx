@@ -2,7 +2,7 @@ import { useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { toast } from "react-toastify";
 
-import PermissionControl from "~features/permission/ui";
+import { PermissionControl } from "~features/permission";
 import { type ICreateUser, useGetUserQuery, useUpdateUserQuery, userSchema } from "~entities/user";
 import { RouterPaths } from "~shared/constants/router-path";
 import { RButton } from "~shared/ui/button";

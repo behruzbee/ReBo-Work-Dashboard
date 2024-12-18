@@ -50,7 +50,7 @@ export const useColumns = () => {
             cell: (info) => {
                 const id = info.cell.row.original.id
                 return (
-                    <PermissionControl level={basePermissions.history.delete}>
+                    <PermissionControl level={basePermissions.history.delete} noAccessText="нет доступа!">
                         <RButton onClick={() => deleteHistory(id)} size='sm' color='red'>O'chirish</RButton>
                     </PermissionControl>
                 )

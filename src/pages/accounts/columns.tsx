@@ -1,7 +1,7 @@
 import { useNavigate } from "react-router-dom"
 import { createColumnHelper } from "@tanstack/react-table"
 
-import PermissionControl from "~features/permission/ui"
+import { PermissionControl } from "~features/permission"
 import { IUser, useDeleteUserQuery } from "~entities/user"
 import { RButton } from "~shared/ui/button"
 import { basePermissions, permissionStatus } from "~shared/constants/base-permissions"
@@ -37,7 +37,7 @@ export const useColumns = () => {
                 const username = info.cell.row.original.username
                 return (
                     <div className={s.buttonsWrapper}>
-                        <PermissionControl level={basePermissions.worker.update}>
+                        <PermissionControl level={basePermissions.worker.update} noAccessText="нет доступа!">
                             <RButton onClick={() => navigate('/accounts/update/' + username)} size='sm' color='green'>O'zgartirish</RButton>
                         </PermissionControl>
                         <PermissionControl level={basePermissions.worker.delete}>

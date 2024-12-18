@@ -2,7 +2,7 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 import { SearchableTable } from "~widgets/searchable-table"
-import PermissionControl from "~features/permission/ui";
+import { PermissionControl } from "~features/permission";
 import { useGetWorkersQuery } from "~entities/worker";
 import { useGetBonusesQuery } from "~entities/bonus";
 import { Spinner } from "~shared/ui/spinner"

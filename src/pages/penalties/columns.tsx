@@ -1,7 +1,7 @@
 import { createColumnHelper } from "@tanstack/react-table"
 
 import { type IPenalty } from "~entities/penalty"
-import PermissionControl from "~features/permission/ui"
+import { PermissionControl } from "~features/permission"
 import { useDeletePenaltyQuery } from "~entities/penalty/api"
 import { useGetWorkersQuery } from "~entities/worker"
 import { basePermissions } from "~shared/constants/base-permissions"
@@ -46,7 +46,7 @@ export const useColumns = () => {
             cell: (info) => {
                 const id = info.cell.row.original.id
                 return (
-                    <PermissionControl level={basePermissions.penalty.delete}>
+                    <PermissionControl level={basePermissions.penalty.delete} noAccessText="нет доступа!">
                         <RButton onClick={() => deletePenalty(id)} size='sm' color='red'>O'chirish</RButton>
                     </PermissionControl>
                 )
