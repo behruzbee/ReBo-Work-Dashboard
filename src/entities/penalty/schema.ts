@@ -6,5 +6,5 @@ export const penaltySchema = z.object({
   amount: z.number({
     required_error: 'Miqdorni kiritish shart',
     invalid_type_error: "Son bo'lishi kerak!"
-  })
+  }).min(5000, "Summa 5.000 so'mdan ko'p bo'ilishi shart")
 })
