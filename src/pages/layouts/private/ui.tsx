@@ -13,7 +13,7 @@ const PrivatePage = () => {
         }
     }, [token, logout])
 
-    if(!token) return null
+    if(token) return null
 
     return <Outlet />
 }
