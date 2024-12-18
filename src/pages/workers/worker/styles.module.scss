@@ -39,6 +39,8 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
+    flex-wrap: wrap;
+    row-gap: 20px;
   }
 }
 
@@ -50,6 +52,8 @@
 }
 
 .statusWorking {
+  display: inline-block;
+  width: max-content;
   padding: 10px;
   border-radius: 4px;
   color: var(--color-white);
