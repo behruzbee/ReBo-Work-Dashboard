@@ -8,12 +8,12 @@ const PrivatePage = () => {
     const token = Cookies.get("AUTH_TOKEN_FRONT")
 
     useEffect(() => {
-        if (token) {
+        if (!token) {
             logout()
         }
     }, [token, logout])
 
-    if(token) return null
+    if(!token) return null
 
     return <Outlet />
 }
