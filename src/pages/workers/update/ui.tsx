@@ -69,7 +69,7 @@ const UpdateWorkerPage = () => {
                         <SalaryInput key='4' defaultValue={worker.monthly_salary} required name="monthly_salary" errorMessage={errors["monthly_salary"]} />,
                         <RInput key='5' defaultValue={worker.age} required placeholder="Yosh kiriting!" type="number" label="Yosh" name="age" min={0} errorMessage={errors["age"]} />,
                         <RInput key='6' defaultValue={worker.hours_to_work} required placeholder="Ish soatini kiriting!" type="number" label="Ish soat" name="hours_to_work" min={0} errorMessage={errors["hours_to_work"]} />,
-                        <QrCodeGeneratorWithDownload workerId={worker.id} defaultValue={worker.qr_code_text} required name="qr_code_text" key='qr-code-generator' errorMessage={errors["qr_code_text"]} />
+                        <QrCodeGeneratorWithDownload workerId={worker.id} required name="qr_code_text" key='qr-code-generator' errorMessage={errors["qr_code_text"]} />
                     ]}
                     buttonText="O'zgartirish"
                 />
