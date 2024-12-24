@@ -24,7 +24,7 @@ export const useColumns = () => {
                     if (worker) {
                         return `${worker.name} ${worker.lastName}`
                     }
-                    return `${info.getValue()} O'chirilgan ishchi`
+                    return `${info.getValue()} O'chirilgan Xodim`
                 }
             }
         }),

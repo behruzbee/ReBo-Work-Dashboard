@@ -25,7 +25,7 @@ const WorkerPage = () => {
   const navigate = useNavigate()
 
   if (!worker) {
-    return <h1>Bunday ID bilan ishchi topilmadi</h1>
+    return <h1>Bunday ID bilan Xodim topilmadi</h1>
   }
 
   const totalPenaltiesAmount = penalties ? penalties.reduce((prev, curr) => prev + curr.amount, 0) : 0
@@ -68,26 +68,26 @@ const WorkerPage = () => {
         <div className={s.cardInfoWrapper}>
           <CardInfo
             iconName="money"
-            title="Ishchi bonuslari"
+            title="Xodim bonuslari"
             type="bonus"
             value={`${parseNumberWithSpaces(totalBonusesAmount)} so'm`}
           />
           <CardInfo
             iconName="money-withdraw"
-            title="Ishchi jarimalari"
+            title="Xodim jarimalari"
             type="penalty"
             value={`${parseNumberWithSpaces(totalPenaltiesAmount)} so'm`}
           />
           <CardInfo
             iconName="time-five"
-            title="Ishchi ishlagan daqiqasi"
+            title="Xodim ishlagan daqiqasi"
             type="workingHours"
             value={`${parseNumberWithSpaces(totalWorkingMinutes)} m`}
           />
         </div>
       </div>
 
-      <h4 className={s.title}>Ishchi tarixlar</h4>
+      <h4 className={s.title}>Xodim tarixlar</h4>
 
       <RTable
         data={histories || []}

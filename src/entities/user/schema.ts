@@ -11,6 +11,6 @@ export const userSchema = z.object({
     .max(70, "Ko'pida 70ta harf bo'lishi shart"),
   status_index: z
     .number({ required_error: 'Foydalanuvchi statusini kiriting!' })
-    .min(0, "Ishchi statusi minimum 0 bo'lishi shart")
-    .max(3, "Ishchi statusi minimum 3 bo'lishi shart")
+    .min(0, "Xodim statusi minimum 0 bo'lishi shart")
+    .max(3, "Xodim statusi minimum 3 bo'lishi shart")
 })

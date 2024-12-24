@@ -57,7 +57,7 @@ const WorkerCreatePage = () => {
                 <RIcon name='arrow-back' /> Qaytish
             </RButton>
             <div className={s.wrapper}>
-                <h2 className={s.title}>Ishchi qo'shish</h2>
+                <h2 className={s.title}>Xodim qo'shish</h2>
                 <RForm
                     onSubmit={handleSubmit}
                     inputs={[

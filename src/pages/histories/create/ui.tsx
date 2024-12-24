@@ -74,7 +74,7 @@ const HistoryCreatePage = () => {
                         <RSelect
                             key='1'
                             required
-                            label="Ishchi"
+                            label="Xodim"
                             name="worker_id"
                             options={workersOptions}
                             errorMessage={errors["worker_id"]}

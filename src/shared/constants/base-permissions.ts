@@ -38,4 +38,4 @@ export const basePermissions = {
   users: baseUsersPermission
 }
 
-export const permissionStatus = ['super-admin', 'direktor', 'menejer', 'ishchi']
+export const permissionStatus = ['super-admin', 'direktor', 'menejer', 'Xodim']

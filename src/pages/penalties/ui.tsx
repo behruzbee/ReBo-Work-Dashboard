@@ -57,7 +57,7 @@ const PenaltiesPage = () => {
             key='worker_id'
             value={filters.worker_id}
             onChange={(e: React.ChangeEvent<HTMLSelectElement>) => setFilters((prev) => ({ ...prev, worker_id: e.target.value }))}
-            label="Ishchi orqali qidirish"
+            label="Xodim orqali qidirish"
             options={workersSelectOptions}
             defaultOptionText="Hammasi"
           />,

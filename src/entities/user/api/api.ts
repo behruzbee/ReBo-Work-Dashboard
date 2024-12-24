@@ -33,7 +33,7 @@ export const getUser = async (username: string) => {
 export const createUser = async (user: ICreateUser) => {
   try {
     const newUser = await apiInstance.post<IUser>('/user', user)
-    toast.success("Ishchi muvaffaqiyatli qo'shildi!")
+    toast.success("Xodim muvaffaqiyatli qo'shildi!")
     return newUser.data
   } catch (error) {
     console.log(error)
@@ -48,7 +48,7 @@ export const createUser = async (user: ICreateUser) => {
 export const deleteUser = async (username: string) => {
   try {
     const newUser = await apiInstance.delete<IUser>('/user/' + username)
-    toast.success("Ishchi muvaffaqiyatli o'chirildi!")
+    toast.success("Xodim muvaffaqiyatli o'chirildi!")
     return newUser.data
   } catch (error) {
     if (axios.isAxiosError(error) && error.response) {
@@ -65,7 +65,7 @@ export const updateUser = async (user: ICreateUser) => {
       '/user/' + user.username,
       user
     )
-    toast.success("Ishchi muvaffaqiyatli o'zgartirildi!")
+    toast.success("Xodim muvaffaqiyatli o'zgartirildi!")
     return updatedUser.data
   } catch (error) {
     if (axios.isAxiosError(error) && error.response) {
