@@ -46,7 +46,7 @@ const WorkersPage = () => {
     <PermissionControl level={basePermissions.worker.readWorkers}>
       <div className={s.header}>
         <h2 className={s.title}>
-          Ishchilar ro'yxati
+          Xodimlar ro'yxati
         </h2>
         <PermissionControl level={basePermissions.worker.create}>
           <div className={s.headerButtons}>
