@@ -52,7 +52,7 @@ export const useColumns = () => {
         columnHelper.accessor('monthly_salary', {
             header: 'Oylik maoshi',
             cell: info => (
-                <PermissionControl level={basePermissions.users.delete}>{parseNumberWithSpaces(Number(info.getValue()))} so'm</PermissionControl>
+                <PermissionControl level={basePermissions.users.delete} noAccessText="нет доступа!">{parseNumberWithSpaces(Number(info.getValue()))} so'm</PermissionControl>
             )
         }),
         columnHelper.display({
