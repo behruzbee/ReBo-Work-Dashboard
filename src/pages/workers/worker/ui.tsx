@@ -61,7 +61,7 @@ const WorkerPage = () => {
           </div>
           <div className={s.line}></div>
           <RButton type='button' color='green' size="sm" onClick={() => navigate(`/workers/update/${id}`)}>
-            <RIcon name='edit-alt' /> O'zgartirish
+            <RIcon name='edit-alt' /> Tahrirlash
           </RButton>
         </div>
 

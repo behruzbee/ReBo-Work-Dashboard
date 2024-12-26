@@ -59,7 +59,7 @@ const UpdateWorkerPage = () => {
                 <RIcon name='arrow-back' /> Qaytish
             </RButton>
             <div className={s.wrapper}>
-                <h2 className={s.title}>Ishchini o'zgartirish</h2>
+                <h2 className={s.title}>Ishchini Tahrirlash</h2>
                 <RForm
                     onSubmit={handleSubmit}
                     inputs={[
@@ -71,7 +71,7 @@ const UpdateWorkerPage = () => {
                         <RInput key='6' defaultValue={worker.hours_to_work} required placeholder="Ish soatini kiriting!" type="number" label="Ish soat" name="hours_to_work" min={0} errorMessage={errors["hours_to_work"]} />,
                         <QrCodeGeneratorWithDownload workerId={worker.id} required name="qr_code_text" key='qr-code-generator' errorMessage={errors["qr_code_text"]} />
                     ]}
-                    buttonText="O'zgartirish"
+                    buttonText="Tahrirlash"
                 />
             </div>
         </PermissionControl>

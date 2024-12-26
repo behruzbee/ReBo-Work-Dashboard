@@ -62,7 +62,7 @@ export const useColumns = () => {
                 return (
                     <div className={s.buttonsWrapper}>
                         <PermissionControl level={basePermissions.worker.update} noAccessText="нет доступа!">
-                            <RButton onClick={() => navigate('/workers/update/' + id)} size='sm' color='green'>O'zgartirish</RButton>
+                            <RButton onClick={() => navigate('/workers/update/' + id)} size='sm' color='green'>Tahrirlash</RButton>
                         </PermissionControl>
                         <PermissionControl level={basePermissions.worker.delete}>
                             <RButton onClick={() => deleteWorker(id)} size='sm' color='red'>O'chirish</RButton>

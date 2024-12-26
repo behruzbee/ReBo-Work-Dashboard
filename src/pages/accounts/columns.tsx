@@ -2,7 +2,7 @@ import { useNavigate } from "react-router-dom"
 import { createColumnHelper } from "@tanstack/react-table"
 
 import { PermissionControl } from "~features/permission"
-import { IUser, useDeleteUserQuery } from "~entities/user"
+import { IUser, useDeleteUserQuery, useGetMe } from "~entities/user"
 import { RButton } from "~shared/ui/button"
 import { basePermissions, permissionStatus } from "~shared/constants/base-permissions"
 
@@ -12,6 +12,7 @@ const columnHelper = createColumnHelper<IUser>()
 
 export const useColumns = () => {
     const navigate = useNavigate()
+    const { data: me } = useGetMe()
     const { mutate: deleteUser } = useDeleteUserQuery()
 
     const columns = [
@@ -38,11 +39,14 @@ export const useColumns = () => {
                 return (
                     <div className={s.buttonsWrapper}>
                         <PermissionControl level={basePermissions.worker.update} noAccessText="нет доступа!">
-                            <RButton onClick={() => navigate('/accounts/update/' + username)} size='sm' color='green'>O'zgartirish</RButton>
+                            <RButton onClick={() => navigate('/accounts/update/' + username)} size='sm' color='green'>Tahrirlash</RButton>
                         </PermissionControl>
-                        <PermissionControl level={basePermissions.worker.delete}>
-                            <RButton onClick={() => deleteUser(username)} size='sm' color='red'>O'chirish</RButton>
-                        </PermissionControl>
+                        {me?.username !== username &&
+                            <PermissionControl level={basePermissions.worker.delete}>
+                                <RButton onClick={() => deleteUser(username)} size='sm' color='red'>O'chirish</RButton>
+                            </PermissionControl>
+                        }
+
                     </div>
                 )
             }
