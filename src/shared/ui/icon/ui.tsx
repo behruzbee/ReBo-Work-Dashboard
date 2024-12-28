@@ -1,12 +1,12 @@
+import { HTMLProps } from "react"
 
-interface RIconProps {
-    className?: string,
+interface RIconProps extends HTMLProps<HTMLDivElement> {
     name: string
 }
 
-const RIcon = ({ name, className }: RIconProps) => {
+const RIcon = ({ name, className, ...props }: RIconProps) => {
     return (
-        <i className={`bx bx-${name} ${className || ''}`}></i>
+        <i className={`bx bx-${name} ${className}`} {...props}></i>
     )
 }
 

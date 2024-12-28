@@ -59,7 +59,7 @@ const UpdateWorkerPage = () => {
                 <RIcon name='arrow-back' /> Qaytish
             </RButton>
             <div className={s.wrapper}>
-                <h2 className={s.title}>Ishchini Tahrirlash</h2>
+                <h2 className={s.title}>Xodimni Tahrirlash</h2>
                 <RForm
                     onSubmit={handleSubmit}
                     inputs={[

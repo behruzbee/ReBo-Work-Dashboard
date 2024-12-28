@@ -78,7 +78,7 @@ const HistoryCreatePage = () => {
                             name="worker_id"
                             options={workersOptions}
                             errorMessage={errors["worker_id"]}
-                            defaultOptionText="Ishchini tanlang"
+                            defaultOptionText="Xodimni tanlang"
                         />,
                         <RSelect
                             key='2'

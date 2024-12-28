@@ -1,7 +1,7 @@
 import z from 'zod'
 
 export const penaltySchema = z.object({
-  worker_id: z.string({ required_error: 'Ishchini tanlang!' }),
+  worker_id: z.string({ required_error: 'Xodimni tanlang!' }),
   description: z.string({ required_error: 'Sababni kiritish shart!' }),
   amount: z.number({
     required_error: 'Miqdorni kiritish shart',

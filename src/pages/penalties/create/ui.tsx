@@ -66,7 +66,7 @@ const PenaltyCreatePage = () => {
                             name="worker_id"
                             options={workersOptions}
                             errorMessage={errors["worker_id"]}
-                            defaultOptionText="Ishchini Tanlang"
+                            defaultOptionText="Xodimni Tanlang"
                         />,
                         <RInput key='2'
                             required
