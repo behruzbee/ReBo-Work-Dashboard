@@ -1,10 +1,10 @@
 import { Outlet } from 'react-router-dom';
 
+import { Sidebar } from '~widgets/sidebar';
 import { RouterPaths } from '~shared/constants/router-path';
 import { basePermissions } from '~shared/constants/base-permissions';
 
 import s from './styles.module.scss';
-import { Sidebar } from './components/sidebar';
 
 const LINKS = [
   { path: RouterPaths.workers.root, icon: 'male', text: "Xodimlar", permissionLevel: basePermissions.worker.readWorkers },

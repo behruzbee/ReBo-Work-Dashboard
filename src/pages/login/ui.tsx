@@ -1,9 +1,9 @@
+import { useEffect } from 'react'
 import { LoginForm } from '~features/login-form'
 import { RIcon } from '~shared/ui/icon'
-import s from './styles.module.scss'
 import { useLogout } from '~shared/hooks/useLogout'
-import { useEffect } from 'react'
 
+import s from './styles.module.scss'
 const LoginPage = () => {
     const logout = useLogout()
 

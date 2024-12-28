@@ -17,13 +17,14 @@ export const useColumns = () => {
         columnHelper.accessor('worker_id', {
             header: 'Ism Familya',
             cell: info => {
-                if (workers) {
-                    const worker = workers.find(worker => worker.id === info.getValue())
-                    if (worker) {
-                        return `${worker.name} ${worker.lastName}`
-                    }
-                    return `${info.getValue()} O'chirilgan Xodim`
+                if(!workers) {
+                    return 'Loading...'
                 }
+                const worker = workers.find(worker => worker.id === info.getValue())
+                if (worker) {
+                    return `${worker.name} ${worker.lastName}`
+                }
+                return `${info.getValue()} O'chirilgan Xodim`
             }
         }),
         columnHelper.accessor('description', {
